@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alapati Chaitanya Krishna | Business Systems & Process Optimization</title>
+    <title>Alapati Chaitanya Krishna | Enterprise Business Systems & Operational Governance</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -12,36 +12,49 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            --washu-red: #A51D2D;
-            --accenture-indigo: #001E60;
-            --gitam-blue: #0051A2;
-            --suit-beige: #EADBC8;
+            --washu-red: #8B0000;
+            --deep-slate: #0F172A;
             --bone: #FBF9F6;
+            --off-white: #F8F7F5;
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--bone);
-            color: #1e293b;
+            color: var(--deep-slate);
             scroll-behavior: smooth; 
+            overflow-x: hidden;
         }
 
-        /* Maximum Width for modern large displays */
-        .section-container { max-width: 1536px; margin: 0 auto; padding: 0 3rem; }
+        /* 1600px Wide Screen Optimization - Immersive Flow */
+        .section-container { max-width: 1600px; margin: 0 auto; padding: 0 4rem; }
+        .content-wrap { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
         
-        .hero-pattern { background-color: #ffffff; background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.2px); background-size: 30px 30px; }
-        
-        .washu-theme { 
-            background: linear-gradient(rgba(165, 29, 45, 0.94), rgba(120, 10, 20, 0.98)), url('https://images.unsplash.com/photo-1541339907198-e08756defe93?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover; background-position: center;
-        }
-        .gitam-theme { 
-            background: linear-gradient(rgba(0, 81, 162, 0.94), rgba(0, 51, 102, 0.98)), url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop'); 
-            background-size: cover; background-position: center;
+        .hero-pattern { 
+            background-color: #ffffff; 
+            background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.2px, transparent 1.2px); 
+            background-size: 32px 32px; 
         }
 
-        @keyframes reveal { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-reveal { animation: reveal 0.8s ease-out forwards; }
+        .transition-premium { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        @keyframes revealUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-reveal { animation: revealUp 0.8s ease-out forwards; }
+
+        .timeline-line {
+            position: absolute;
+            left: 28px;
+            top: 40px;
+            bottom: 0;
+            width: 1px;
+            background: var(--deep-slate);
+            opacity: 0.1;
+        }
+
+        @media (max-width: 768px) {
+            .section-container { padding: 0 1.5rem; }
+            .timeline-line { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -52,29 +65,15 @@
 
         const UI = {
             Shield: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-            Plane: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17.8 19.2l-1.4-1.4m0 0l-4-4V3.5h-1v10.3l-4 4-1.4 1.4m11.8 0a2 2 0 11-2.8-2.8 2 2 0 012.8 2.8z"/></svg>,
             Check: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>,
             File: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>,
             Award: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"/></svg>,
-            Globe: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>,
-            Phone: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>,
-            Linkedin: () => (
-                <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.2h.07c.65-1.23 2.23-2.52 4.6-2.52 4.92 0 5.83 3.24 5.83 7.45V24h-5v-7.98c0-1.9-.03-4.34-2.65-4.34-2.66 0-3.07 2.08-3.07 4.21V24h-5V8z"/>
-                </svg>
-            ),
-            Mail: () => (
-                <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
-                </svg>
-            ),
-            CheckCircle: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>,
-            Database: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/></svg>,
-            Chart: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>,
-            Activity: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>,
+            Globe: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10z"/></svg>,
+            Linkedin: () => <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>,
             Flask: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 2v6l-6 12h16l-6-12V2"/></svg>,
             Target: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
-            Graduation: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
+            Mail: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>,
+            Briefcase: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>,
         };
 
         const App = () => {
@@ -91,13 +90,12 @@
                     role: "Graduate Teaching Assistant",
                     period: "Aug 2025 – Dec 2025",
                     bullets: [
-                        "Supported delivery of graduate-level Revenue Management and Supply Chain Analytics courses for 60+ students.",
-                        "Conducted technical review sessions explaining forecasting models, pricing optimization, and stochastic decision frameworks.",
-                        "Assisted faculty in evaluating analytical case studies involving demand planning, capacity allocation, and financial modeling.",
-                        "Guided students in translating complex quantitative outputs into executive-ready business recommendations.",
-                        "Coordinated assignment feedback cycles between faculty and students, ensuring timely grading and academic clarity."
+                        "Supporting delivery of graduate-level Revenue Management and Supply Chain Analytics courses for 60+ students.",
+                        "Conducting technical review sessions explaining forecasting models, pricing frameworks, and stochastic decision logic.",
+                        "Assisting faculty in evaluating quantitative case studies involving demand planning and applied business modeling.",
+                        "Coordinating assignment feedback cycles between faculty and students, ensuring timely grading and consistent academic clarity."
                     ],
-                    summary: "Acted as the academic bridge between faculty and graduate cohorts, translating complex analytical models into structured, business-aligned explanations."
+                    summary: "Academic bridge between faculty and graduate cohorts, translating complex quantitative models into structured, business-aligned explanations."
                 },
                 {
                     company: "Center for Experiential Learning",
@@ -105,41 +103,35 @@
                     period: "Jan 2025 – May 2025",
                     bullets: [
                         "Led operational analysis for a leading hospitality client operating on thin 3–5% profit margins.",
-                        "Conducted SKU-level spend concentration analysis across 200+ inventory items using SQL and Pareto modeling.",
-                        "Identified top 12–15 items contributing to 65% of total procurement spend.",
-                        "Designed a structured prime cost visibility model integrating COGS and labor inputs.",
-                        "Developed mobile-ready Tableau dashboards enabling store managers to monitor reorder thresholds and margin risk.",
-                        "Automated recurring reporting workflows, reducing manual data preparation time by 40%."
+                        "Identified top 12–15 items driving 65% of spend using Pareto modeling and targeted SQL validation.",
+                        "Designed a structured prime cost visibility model integrating COGS and labor inputs for executive oversight.",
+                        "Developed mobile-ready Tableau dashboards enabling store managers to monitor reorder thresholds and margin risk."
                     ],
-                    summary: "Converted a manual procurement environment into a structured operational visibility system, improving cost control discipline and reducing projected waste by 15%."
+                    summary: "Converted a manual environment into a structured operational visibility system, improving cost control discipline and reducing waste by 15%."
                 },
                 {
                     company: "Accenture",
                     role: "Business Architecture Analyst",
                     period: "May 2022 – Jan 2024",
                     bullets: [
-                        "Led functional modernization for 5 enterprise marine insurance platforms with 14+ years of legacy complexity.",
-                        "Authored 65+ Business Requirement Documents (BRDs) covering underwriting, endorsements, and premium recalculations.",
-                        "Mapped complex ARP/MRP underwriting logic into structured functional specifications for development teams.",
-                        "Facilitated cross-vendor coordination between business stakeholders, QA teams, and technical delivery squads.",
-                        "Managed defect triage lifecycle using ServiceNow, ensuring prioritized backlog resolution on schedule.",
-                        "Oversaw end-to-end UAT cycles to ensure business logic accuracy prior to production releases.",
-                        "Ensured 100% audit compliance for system-generated certificates and regulatory reporting modules."
+                        "Led functional modernization across 5 enterprise marine insurance platforms within a multi-vendor delivery environment.",
+                        "Authored 65+ BRDs covering underwriting, endorsements, and premium recalculations.",
+                        "Partnered directly with underwriting stakeholders to document premium recalculation and endorsement logic across regulated workflows.",
+                        "Cleared a stalled project backlog through structured defect triage and change lifecycle governance in ServiceNow."
                     ],
-                    summary: "Served as the functional systems bridge between underwriting operations and modernization teams, ensuring structured governance and system stability."
+                    summary: "Served as the functional bridge between underwriting operations and modernization teams, ensuring structured governance and system stability."
                 },
                 {
                     company: "Accenture",
-                    role: "Test Associate (System & Process Assurance)",
+                    role: "Test Associate (System Assurance)",
                     period: "Aug 2021 – Apr 2022",
                     bullets: [
                         "Performed source-to-target validation across enterprise healthcare registries involving physician and medication records.",
-                        "Executed 150+ structured validation scripts to ensure reporting consistency and 100% data reflection accuracy.",
-                        "Conducted API-level testing using Postman to verify backend-to-frontend synchronization.",
-                        "Monitored streaming data validation via Kafka pipelines for real-time reporting reliability.",
-                        "Identified early-stage inconsistencies that reduced downstream manual rework by 25%."
+                        "Executed 150+ structured validation scripts ensuring 100% data reflection accuracy across backend systems.",
+                        "Conducted API testing using Postman to verify backend-to-frontend synchronization for clinical data.",
+                        "Monitored real-time data streaming via Kafka to ensure zero-defect integration for regulated reporting."
                     ],
-                    summary: "Ensured integrity and synchronization of regulated healthcare datasets, maintaining trust in enterprise reporting systems."
+                    summary: "Secured data integrity of regulated healthcare datasets, maintaining trust in enterprise reporting systems."
                 }
             ];
 
@@ -147,180 +139,125 @@
                 {
                     title: "Healthcare Data Integrity & Geo-Analytics",
                     metric: "2.1M+ Records Validated",
-                    problem: "Post-2017 clinical datasets exhibited inconsistent treatment documentation and regional reporting gaps.",
-                    action: "Performed large-scale SQL validation across 2,126,804 records and integrated geospatial visualization to identify treatment disparities.",
-                    result: "Restored reporting accuracy and provided geographic insights to support equitable healthcare resource distribution.",
+                    objective: "Address Post-2017 treatment documentation gaps and regional reporting inconsistencies.",
+                    approach: "Large-scale SQL validation and geospatial visualization to identify regional disparities.",
+                    result: "Restored reporting accuracy and provided insights to support equitable healthcare resource distribution.",
                     tags: ["System Assurance", "SQL", "Geo-Analytics"],
-                    icon: "Flask"
+                    icon: <UI.Flask />
                 },
                 {
                     title: "MLB Performance Valuation Analysis",
                     metric: "25,441 Stats Validated",
-                    problem: "Inconsistent valuation in athlete contracts due to performance vs. salary modeling gaps.",
-                    action: "Built regression-based valuation model to evaluate performance-to-cost efficiency across player segments.",
-                    result: "Identified significant contract undervaluation for international players, providing an optimized valuation model.",
+                    objective: "Evaluate valuation efficiencies in athlete contracts due to salary modeling gaps.",
+                    approach: "High-precision regression analysis to evaluate performance benchmarks vs. valuation.",
+                    result: "Identified contract undervaluation for player segments, providing an optimized valuation model.",
                     tags: ["Predictive Analysis", "Python", "Modeling"],
-                    icon: "Target"
+                    icon: <UI.Target />
                 }
             ];
 
             return (
                 <div className="min-h-screen">
-                    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm' : 'bg-transparent py-6'}`}>
+                    {/* Navigation */}
+                    <nav className={`fixed top-0 w-full z-50 transition-premium ${scrolled ? 'bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm' : 'bg-transparent py-8'}`}>
                         <div className="section-container flex justify-between items-center">
-                            <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-                                <div className="w-8 h-8 bg-[#8B0000] text-white flex items-center justify-center font-black rounded group-hover:rotate-12 transition">A</div>
-                                <span className="font-bold tracking-tight text-slate-800 uppercase text-xs">Alapati Chaitanya Krishna</span>
+                            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+                                <div className="w-10 h-10 bg-[#8B0000] text-white flex items-center justify-center font-black rounded-xl group-hover:rotate-6 transition-premium shadow-lg">A</div>
+                                <div>
+                                    <span className="font-extrabold tracking-tight text-slate-800 uppercase text-xs block leading-tight">Alapati Chaitanya Krishna</span>
+                                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">Business Systems Analyst | Operational Governance</span>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-6">
-                                <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="w-5 h-5 text-slate-400 hover:text-[#0077B5] transition"><UI.Linkedin /></a>
-                                <a href="tel:+13144139337" className="w-5 h-5 text-slate-400 hover:text-red-700 transition"><UI.Phone /></a>
-                                <a href="mailto:a.chaitanyakrishna@wustl.edu" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-700 transition">Let's Connect</a>
+                            <div className="flex items-center gap-8">
+                                <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="w-5 h-5 text-slate-400 hover:text-red-700 transition-premium"><UI.Linkedin /></a>
+                                <a href="mailto:a.chaitanyakrishna@wustl.edu" className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-red-700 transition-premium uppercase">Contact</a>
                             </div>
                         </div>
                     </nav>
 
-                    {/* Hero Section */}
-                    <header className="pt-48 pb-32 bg-white border-b border-slate-100 hero-pattern relative overflow-hidden">
-                        <div className="section-container grid lg:grid-cols-12 gap-16 items-center relative z-10">
-                            <div className="lg:col-span-8 animate-reveal">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-red-700 rounded text-[10px] font-black uppercase tracking-widest mb-8 border border-red-100">
+                    {/* Hero Section - Optimized 1600px Flow */}
+                    <header className="pt-48 pb-32 bg-white hero-pattern relative border-b border-slate-50 overflow-hidden">
+                        <div className="section-container grid lg:grid-cols-12 gap-24 items-center relative z-10">
+                            <div className="lg:col-span-7 animate-reveal">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-red-700 rounded-lg text-[10px] font-black uppercase tracking-widest mb-10 border border-red-100">
                                     <div className="w-3 h-3"><UI.Award /></div> WashU Olin MSBA-SC '25
                                 </div>
-                                <h1 className="text-4xl lg:text-[5.5rem] font-extrabold tracking-tighter text-slate-900 mb-8 leading-[1.05] uppercase">
-                                    Business Systems & <br/>
-                                    <span className="text-[#8B0000]">Process Optimization</span>
+                                <h1 className="text-4xl md:text-6xl lg:text-[5.8rem] font-extrabold tracking-tighter text-slate-900 mb-10 leading-[0.95] uppercase">
+                                    Enterprise Systems & <br/>
+                                    <span className="text-[#8B0000]">Operational Governance</span>
                                 </h1>
-                                <p className="text-lg lg:text-xl text-slate-600 font-medium leading-relaxed max-w-4xl mb-12">
-                                    Business Analyst experienced in enterprise systems modernization, operational governance, and structured process optimization. Focused on translating business requirements into stable, well-governed system solutions across regulated environments.
+                                <p className="text-lg lg:text-3xl text-slate-500 font-medium leading-relaxed max-w-5xl mb-12">
+                                    Business Analyst specializing in enterprise systems modernization, operational governance, and structured process optimization. Focused on translating business requirements into stable, scalable system outcomes.
                                 </p>
-                                <div className="flex flex-wrap gap-4">
-                                    <a href="mailto:a.chaitanyakrishna@wustl.edu" className="px-8 py-3.5 bg-[#8B0000] text-white rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:bg-slate-900 shadow-xl shadow-red-900/10">Contact Me</a>
-                                    <a href="./resume.pdf" download className="px-8 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:border-red-700 shadow-sm flex items-center gap-2">
-                                        <div className="w-4 h-4"><UI.File /></div> Download Resume
+                                <div className="flex flex-wrap gap-5">
+                                    <a href="mailto:a.chaitanyakrishna@wustl.edu" className="px-10 py-5 bg-[#8B0000] text-white rounded-2xl font-bold text-sm uppercase tracking-widest transition-premium hover:bg-slate-900 shadow-xl shadow-red-900/10 active:scale-95">Email Me</a>
+                                    <a href="./resume.pdf" download className="px-10 py-5 bg-white border border-slate-200 text-slate-700 rounded-2xl font-bold text-sm uppercase tracking-widest transition-premium hover:border-red-700 shadow-sm flex items-center gap-3 active:scale-95">
+                                        <div className="w-5 h-5"><UI.File /></div> Resume
                                     </a>
                                 </div>
                             </div>
-                            <div className="lg:col-span-4 flex justify-center">
-                                <div className="relative w-full max-w-[400px] aspect-[4/5] bg-[#EADBC8] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group transition-all duration-700">
+                            <div className="lg:col-span-5 flex justify-center">
+                                <div className="relative w-full max-w-[480px] aspect-[4/5] bg-slate-100 rounded-3xl overflow-hidden shadow-2xl border-[16px] border-white group transition-premium">
                                     <img 
                                         src="./a.chaitanya.krishna.jpg" 
-                                        alt="Alapati Chaitanya Krishna" 
-                                        className="w-full h-full object-cover transition group-hover:scale-105 duration-1000"
-                                        onError={(e) => {
-                                            e.target.style.display = 'none';
-                                            e.target.nextSibling.style.display = 'block';
-                                        }}
+                                        alt="Alapati Chaitanya Krishna - Beige Suit Graduation" 
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                        onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                                     />
-                                    <div style={{display: 'none'}} className="w-full h-full bg-slate-200 flex items-center justify-center">
-                                        <p className="text-slate-400 font-bold uppercase text-[10px]">Photo Not Found</p>
-                                    </div>
+                                    <div style={{display: 'none'}} className="w-full h-full items-center justify-center bg-slate-200 text-slate-400 font-bold text-xs uppercase tracking-widest italic">Photo Ready</div>
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    {/* Competencies */}
-                    <section className="py-24 bg-white border-b border-slate-50">
+                    {/* Systems Ribbon */}
+                    <section className="py-16 bg-white border-b border-slate-50">
                         <div className="section-container">
-                            <h2 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.4em] mb-16 text-center">Core Functional Capabilities</h2>
-                            <div className="grid md:grid-cols-3 gap-12 text-left">
-                                <div>
-                                    <h3 className="font-bold text-slate-900 mb-6 border-b border-red-100 pb-2 flex items-center gap-2 uppercase tracking-tighter">
-                                        <div className="w-4 h-4 text-red-700"><UI.CheckCircle /></div> Business & Functional
-                                    </h3>
-                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
-                                        <li>• BRD / FRD Authoring</li>
-                                        <li>• Stakeholder Alignment</li>
-                                        <li>• Legacy System Modernization</li>
-                                        <li>• Underwriting Logic Mapping</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-slate-900 mb-6 border-b border-red-100 pb-2 flex items-center gap-2 uppercase tracking-tighter">
-                                        <div className="w-4 h-4 text-red-700"><UI.Database /></div> System & Process Assurance
-                                    </h3>
-                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
-                                        <li>• Functional Validation & UAT</li>
-                                        <li>• Source-to-Target Oversight</li>
-                                        <li>• API Workflow Coordination</li>
-                                        <li>• Defect & Change Management</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-slate-900 mb-6 border-b border-red-100 pb-2 flex items-center gap-2 uppercase tracking-tighter">
-                                        <div className="w-4 h-4 text-red-700"><UI.Chart /></div> Operations & Margin
-                                    </h3>
-                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
-                                        <li>• Prime Cost Modeling (COGS)</li>
-                                        <li>• Inventory Optimization</li>
-                                        <li>• Margin Stabilization</li>
-                                        <li>• BI Dashboard Strategy</li>
-                                    </ul>
+                            <div className="flex flex-col md:flex-row items-center justify-between gap-12 opacity-70">
+                                <p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.4em] whitespace-nowrap">Core Systems Exposure</p>
+                                <div className="flex flex-wrap justify-center gap-x-16 gap-y-6 font-bold text-sm text-slate-500 uppercase tracking-widest">
+                                    <span>ServiceNow</span>
+                                    <span>SQL (Validation)</span>
+                                    <span>Tableau</span>
+                                    <span>Postman</span>
+                                    <span>JIRA</span>
+                                    <span>Excel Modeling</span>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Technical Toolkit */}
-                    <section className="py-24 bg-slate-50 border-b border-slate-100">
-                        <div className="section-container">
-                            <h2 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.4em] mb-12 text-center">Technical Toolkit</h2>
-                            <div className="grid md:grid-cols-3 gap-8">
-                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
-                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Business Tools</p>
-                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
-                                        {["SQL", "Excel", "Tableau", "Power BI", "ServiceNow", "JIRA", "Postman"].map(t => (
-                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
-                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Analytics & Methods</p>
-                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
-                                        {["Process Mapping", "Requirements Gathering", "Forecasting", "Demand Planning", "Root Cause Analysis", "UAT"].map(t => (
-                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
-                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Data & Systems</p>
-                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
-                                        {["API Validation", "Source-to-Target", "Documentation", "Requirement Governance"].map(t => (
-                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Professional Journey */}
-                    <section className="py-32" id="journey">
-                        <div className="section-container">
-                            <h2 className="text-2xl font-black uppercase tracking-tight mb-20 pb-2 border-b-4 border-slate-900 inline-block uppercase tracking-tighter italic">Professional Journey</h2>
+                    {/* Journey Section - Linear Flow */}
+                    <section className="py-32 bg-[#FBF9F6]" id="journey">
+                        <div className="section-container relative">
+                            <div className="timeline-line hidden lg:block" />
+                            <h2 className="text-3xl font-black uppercase tracking-widest mb-24 border-b-4 border-slate-900 inline-block">The Journey</h2>
+                            
                             <div className="space-y-32">
                                 {experiences.map((exp, idx) => (
-                                    <div key={idx} className="grid lg:grid-cols-12 gap-12 group transition duration-500">
-                                        <div className="lg:col-span-5">
-                                            <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-2 italic">{exp.period}</p>
-                                            <h3 className="text-3xl font-bold text-slate-900 leading-none mb-3 uppercase tracking-tighter">{exp.role}</h3>
-                                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{exp.company}</p>
-                                            <div className="mt-10 p-8 bg-white rounded-3xl border border-slate-200 shadow-sm transition group-hover:shadow-xl duration-500 italic">
-                                                <p className="text-lg font-medium text-slate-600 leading-relaxed border-l-4 border-red-700 pl-6">
-                                                    "{exp.summary}"
-                                                </p>
+                                    <div key={idx} className="relative pl-0 lg:pl-20 group">
+                                        <div className="hidden lg:block absolute left-6 top-3 w-4 h-4 rounded-full bg-white border-4 border-red-700 z-10 group-hover:scale-125 transition-transform" />
+                                        <div className="grid lg:grid-cols-12 gap-16">
+                                            <div className="lg:col-span-5">
+                                                <div className="p-12 rounded-3xl bg-white border border-slate-100 shadow-sm transition-premium hover:shadow-2xl hover:-translate-y-1">
+                                                    <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-3 italic">{exp.period}</p>
+                                                    <h3 className="text-3xl font-bold text-slate-900 mb-2 uppercase tracking-tight leading-tight">{exp.role}</h3>
+                                                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-10">{exp.company}</p>
+                                                    <div className="p-8 bg-slate-50 rounded-2xl border-l-4 border-red-700">
+                                                        <p className="text-xl font-medium text-slate-600 leading-relaxed italic">"{exp.summary}"</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="lg:col-span-7 pt-10">
-                                            <ul className="space-y-6">
-                                                {exp.bullets.map((b, i) => (
-                                                    <li key={i} className="flex gap-4 text-sm font-semibold text-slate-500 leading-relaxed">
-                                                        <div className="w-6 h-6 flex items-center justify-center bg-slate-100 text-red-700 rounded-lg shrink-0 mt-0.5 shadow-sm"><UI.Check /></div>
-                                                        {b}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <div className="lg:col-span-7 pt-6">
+                                                <ul className="space-y-6">
+                                                    {exp.bullets.map((b, i) => (
+                                                        <li key={i} className="flex gap-6 text-base font-semibold text-slate-500 leading-relaxed group/item">
+                                                            <div className="w-6 h-6 flex items-center justify-center bg-slate-100 text-red-700 rounded-md shrink-0 mt-0.5 group-hover/item:bg-red-700 group-hover/item:text-white transition-colors"><UI.Check /></div>
+                                                            <span className="opacity-80 group-hover/item:opacity-100 transition-opacity">{b}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -328,33 +265,22 @@
                         </div>
                     </section>
 
-                    {/* Project Experience Section */}
-                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-10 my-10 shadow-2xl shadow-black/20" id="impact">
+                    {/* Project Work Experience - Full Bleed Dark Theme */}
+                    <section className="py-32 bg-[#0F172A] text-white" id="impact">
                         <div className="section-container">
-                            <h2 className="text-4xl lg:text-5xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left tracking-tight">Analytical Research Projects</h2>
-                            <div className="grid md:grid-cols-2 gap-10">
+                            <h2 className="text-4xl lg:text-7xl font-black tracking-tight uppercase italic mb-20 text-left">Project Work Experience</h2>
+                            <div className="grid lg:grid-cols-2 gap-12">
                                 {analyticalProjects.map((p, i) => (
-                                    <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all flex flex-col h-full group">
-                                        <div className="flex justify-between items-start mb-10">
-                                            <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition group-hover:scale-110">
-                                                <IconSelector name={p.icon} />
-                                            </div>
-                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">{p.metric}</span>
+                                    <div key={i} className="bg-white/5 p-16 rounded-2xl border border-white/10 hover:bg-white/[0.08] transition-premium group flex flex-col h-full">
+                                        <div className="flex justify-between items-start mb-14">
+                                            <div className="w-16 h-16 bg-white text-red-700 p-4 rounded-2xl shadow-xl transition-premium group-hover:rotate-6">{p.icon}</div>
+                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-6 py-2.5 rounded-full border border-red-500/10 shadow-lg">{p.metric}</span>
                                         </div>
-                                        <h3 className="text-2xl font-black mb-10 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-4">{p.title}</h3>
-                                        <div className="space-y-8 flex-grow">
-                                            <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Objective</p>
-                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.problem}</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Approach</p>
-                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.action}</p>
-                                            </div>
-                                            <div className="p-4 bg-white/5 rounded-2xl border-l-4 border-red-600">
-                                                <p className="text-[10px] font-black uppercase text-red-500 mb-1 italic">Impact</p>
-                                                <p className="text-sm font-black text-white leading-tight italic">{p.result}</p>
-                                            </div>
+                                        <h3 className="text-3xl lg:text-5xl font-black mb-12 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-8 group-hover:text-red-500 transition-colors">{p.title}</h3>
+                                        <div className="space-y-12 flex-grow text-base font-medium">
+                                            <div><p className="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-[0.4em] italic border-l border-red-700 pl-4">Objective</p><p className="text-slate-300 leading-relaxed italic">{p.objective}</p></div>
+                                            <div><p className="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-[0.4em] italic border-l border-red-700 pl-4">Approach</p><p className="text-slate-300 leading-relaxed italic">{p.approach}</p></div>
+                                            <div className="p-8 bg-white/5 rounded-2xl border-l-8 border-red-600 shadow-xl transition-premium group-hover:bg-white/10"><p className="text-[10px] font-black text-red-500 mb-2 uppercase tracking-widest">Impact</p><p className="text-xl font-black text-white italic">{p.result}</p></div>
                                         </div>
                                     </div>
                                 ))}
@@ -362,117 +288,81 @@
                         </div>
                     </section>
 
-                    {/* Academic Foundation section */}
-                    <section className="py-32">
+                    {/* Academic Foundation Section */}
+                    <section className="py-32 bg-white">
                         <div className="section-container text-center lg:text-left">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-16 pb-2 border-b-4 border-slate-900 inline-block uppercase tracking-tighter italic">Academic Foundations</h2>
-                            <div className="grid lg:grid-cols-2 gap-10 text-white">
-                                <div className="p-12 rounded-[4rem] washu-theme shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
-                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-red-700 font-black text-3xl mb-10 shadow-2xl z-10 relative">W</div>
-                                    <div className="relative z-10">
-                                        <h3 className="text-3xl font-black uppercase italic mb-4 underline decoration-white/20 underline-offset-8 text-white">MS Business Analytics</h3>
-                                        <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">WashU Olin Business School • Dec 2025</p>
-                                        <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
-                                            Supply Chain Optimization, Stochastic Modeling, Operations Management. GPA 3.73.
-                                        </p>
+                            <h2 className="text-2xl font-black uppercase tracking-widest mb-16 border-b-4 border-slate-900 inline-block italic">Academic Foundations</h2>
+                            <div className="grid lg:grid-cols-2 gap-10">
+                                <div className="p-12 rounded-3xl bg-[#FBF9F6] border border-slate-100 soft-shadow transition-premium hover:scale-[1.02] flex items-center gap-10">
+                                    <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-red-700 font-black text-4xl shadow-md">W</div>
+                                    <div>
+                                        <h3 className="text-3xl font-black uppercase tracking-tighter">MS Business Analytics</h3>
+                                        <p className="text-[10px] font-black uppercase text-red-700 tracking-[0.2em]">WashU Olin Business School • Dec 2025</p>
                                     </div>
                                 </div>
-                                <div className="p-12 rounded-[4rem] gitam-theme shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
-                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-blue-800 font-black text-3xl mb-10 shadow-2xl z-10 relative">G</div>
-                                    <div className="relative z-10">
-                                        <h3 className="text-3xl font-black uppercase italic mb-4 underline decoration-white/20 underline-offset-8 text-white">B.Tech ECE</h3>
-                                        <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">GITAM University • First Class Distinction</p>
-                                        <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
-                                            Electronics & Communication engineering with research in environmental data synchronization.
-                                        </p>
+                                <div className="p-12 rounded-3xl bg-[#FBF9F6] border border-slate-100 soft-shadow transition-premium hover:scale-[1.02] flex items-center gap-10">
+                                    <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-blue-800 font-black text-4xl shadow-md">G</div>
+                                    <div>
+                                        <h3 className="text-3xl font-black uppercase tracking-tighter">B.Tech ECE</h3>
+                                        <p className="text-[10px] font-black uppercase text-blue-700 tracking-[0.2em]">GITAM University • First Class Distinction</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Engagement Section */}
+                    {/* Campus Engagement */}
                     <section className="py-24 bg-white border-t border-slate-50">
                         <div className="section-container text-center lg:text-left">
-                            <h2 className="text-2xl font-black uppercase tracking-tight mb-12 border-b-2 border-slate-900 inline-block italic uppercase tracking-tighter">Leadership & Campus Engagement</h2>
+                            <h2 className="text-2xl font-black uppercase tracking-widest mb-12 border-b-2 border-slate-900 inline-block italic">Leadership</h2>
                             <div className="grid md:grid-cols-2 gap-8">
-                                <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner group transition hover:bg-white duration-500 text-left">
-                                    <div className="flex gap-6 items-start">
-                                        <div className="p-4 bg-red-700/20 text-red-600 rounded-2xl group-hover:bg-red-700 group-hover:text-white transition-all shadow-lg"><UI.Activity size={32}/></div>
-                                        <div>
-                                            <h4 className="font-bold text-xl text-slate-800 mb-2 uppercase tracking-tighter italic">Recreation Operations Lead</h4>
-                                            <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-4 italic">May 2025 – July 2025</p>
-                                            <ul className="text-sm font-semibold text-slate-500 leading-relaxed italic space-y-2 list-disc pl-4">
-                                                <li>Managed facility operations and front-desk workflows during peak summer programming cycles.</li>
-                                                <li>Governed safety and regulatory compliance protocols for concurrent campus recreation services.</li>
-                                                <li>Demonstrated rapid decision-making and cross-functional leadership in a high-traffic environment.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div className="p-12 bg-slate-50 rounded-3xl border border-slate-100 transition-premium hover:bg-white group shadow-sm hover:shadow-2xl text-left">
+                                    <h4 className="font-bold text-2xl text-slate-800 mb-2 uppercase tracking-tight">Recreation Operations Lead</h4>
+                                    <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-6 italic">May 2025 – July 2025</p>
+                                    <p className="text-base font-semibold text-slate-500 leading-relaxed italic">"Managed high-traffic facility operations and safety protocols during peak summer programming cycles."</p>
                                 </div>
-                                <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner group transition hover:bg-white duration-500 text-left">
-                                    <div className="flex gap-6 items-start">
-                                        <div className="p-4 bg-red-700/20 text-red-600 rounded-2xl group-hover:bg-red-700 group-hover:text-white transition-all shadow-lg"><UI.CheckCircle size={32}/></div>
-                                        <div>
-                                            <h4 className="font-bold text-xl text-slate-800 mb-2 uppercase tracking-tighter italic">Intramural Sports Official</h4>
-                                            <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-4 italic">Jan 2025 – Dec 2025</p>
-                                            <ul className="text-sm font-semibold text-slate-500 leading-relaxed italic space-y-2 list-disc pl-4">
-                                                <li>Mediated high-stakes conflicts and regulated inter-league rule interpretation under competitive pressure.</li>
-                                                <li>Coordinated concurrent sporting events ensuring strict adherence to inter-university safety regulations.</li>
-                                                <li>Demonstrated real-time rule interpretation and composure during high-intensity match settings.</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div className="p-12 bg-slate-50 rounded-3xl border border-slate-100 transition-premium hover:bg-white group shadow-sm hover:shadow-2xl text-left">
+                                    <h4 className="font-bold text-2xl text-slate-800 mb-2 uppercase tracking-tight">Intramural Sports Official</h4>
+                                    <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-6 italic">Jan 2025 – Dec 2025</p>
+                                    <p className="text-base font-semibold text-slate-500 leading-relaxed italic">"Mediated high-stakes conflicts and regulated rule interpretation under real-time competitive pressure."</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Footer */}
-                    <footer className="bg-white border-t border-slate-100 pt-32 pb-16">
-                        <div className="section-container">
-                            <div className="grid md:grid-cols-2 gap-20 pb-24 border-b border-slate-100 text-center lg:text-left">
-                                <div>
-                                    <h2 className="text-4xl font-black tracking-tight mb-8 uppercase leading-none italic uppercase tracking-tighter text-slate-900">Let's Connect.</h2>
-                                    <p className="text-lg text-slate-500 font-medium mb-12 leading-relaxed italic">
-                                        Actively seeking Business Analyst and Operations-focused roles where structured systems thinking and operational discipline drive measurable impact.
-                                    </p>
-                                    <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                                        <a href="mailto:a.chaitanyakrishna@wustl.edu" className="px-8 py-3.5 bg-[#8B0000] text-white rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:bg-slate-900 shadow-xl shadow-red-900/10">Email Me</a>
-                                        <a href="tel:+13144139337" className="px-8 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:border-red-700 shadow-sm flex items-center gap-2">
-                                            <div className="w-4 h-4"><UI.Phone /></div> +1 (314) 413-9337
-                                        </a>
+                    {/* Integrated Footer Logistics Ribbon */}
+                    <footer className="bg-white border-t border-slate-100 pt-16 pb-20 overflow-hidden relative">
+                        <div className="section-container relative z-10">
+                            {/* Side-by-Side Logistics Ribbon - Immersed & Small */}
+                            <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 py-10 bg-slate-50 border border-slate-100 rounded-3xl shadow-inner mb-16 px-10">
+                                <div className="flex items-center gap-4 text-center md:text-left">
+                                    <div className="w-8 h-8 text-red-700"><UI.Shield /></div>
+                                    <div>
+                                        <p className="text-[9px] font-black text-red-700 uppercase tracking-widest mb-1 italic">Work Status</p>
+                                        <p className="text-sm font-bold text-slate-800 uppercase tracking-tight leading-none">F-1 STEM OPT — 36 Months Available</p>
                                     </div>
                                 </div>
-                                <div className="flex flex-col justify-center space-y-12 bg-slate-50 p-12 rounded-[4rem] border border-slate-100 shadow-inner">
-                                    <div className="text-center lg:text-left">
-                                        <p className="text-[10px] font-semibold uppercase text-red-700 tracking-[0.3em] mb-4 flex items-center justify-center lg:justify-start gap-2 italic leading-none">
-                                            <div className="w-4 h-4"><UI.Shield /></div> Work Authorization
-                                        </p>
-                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800 leading-tight">F-1 STEM OPT Work Authorization — 36 Months Available</p>
-                                    </div>
-                                    <div className="text-center lg:text-left">
-                                        <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-[0.3em] mb-4 flex items-center justify-center lg:justify-start gap-2 italic leading-none">
-                                            <div className="w-4 h-4"><UI.Globe /></div> Location Flexibility
-                                        </p>
-                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800 leading-tight">Open to relocation across the U.S. and internationally.</p>
+                                <div className="flex items-center gap-4 text-center md:text-left">
+                                    <div className="w-8 h-8 text-slate-400"><UI.Globe /></div>
+                                    <div>
+                                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 italic">Mobility</p>
+                                        <p className="text-sm font-bold text-slate-800 uppercase tracking-tight leading-none">US & International Relocation Ready</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="pt-12 text-center">
-                                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 italic">Alapati Chaitanya Krishna • Strategic Portfolio • 2025</p>
+                            
+                            {/* Final Minimal Credits */}
+                            <div className="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-slate-100 pt-16 opacity-30">
+                                <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-400">Alapati Chaitanya Krishna • MSBA-SC • 2025</p>
+                                <div className="flex gap-10">
+                                    <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="w-6 h-6 text-slate-300 hover:text-red-700 transition-premium"><UI.Linkedin /></a>
+                                    <a href="mailto:a.chaitanyakrishna@wustl.edu" className="w-6 h-6 text-slate-300 hover:text-red-700 transition-premium"><UI.Mail /></a>
+                                </div>
                             </div>
                         </div>
                     </footer>
                 </div>
             );
-        };
-
-        const IconSelector = ({ name }) => {
-            if (name === "Flask") return <UI.Flask />;
-            if (name === "Target") return <UI.Target />;
-            if (name === "Globe") return <UI.Globe />;
-            return <UI.Activity />;
         };
 
         const container = document.getElementById('root');
