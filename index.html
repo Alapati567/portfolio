@@ -26,7 +26,9 @@
             scroll-behavior: smooth; 
         }
 
-        .section-container { max-width: 1050px; margin: 0 auto; padding: 0 1.5rem; }
+        /* Widened Container for Premium Layout */
+        .section-container { max-width: 1350px; margin: 0 auto; padding: 0 2rem; }
+        
         .hero-pattern { background-color: #ffffff; background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.2px); background-size: 30px 30px; }
         
         .washu-theme { 
@@ -48,7 +50,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Comprehensive UI Icon Set
         const UI = {
             Shield: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
             Plane: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17.8 19.2l-1.4-1.4m0 0l-4-4V3.5h-1v10.3l-4 4-1.4 1.4m11.8 0a2 2 0 11-2.8-2.8 2 2 0 012.8 2.8z"/></svg>,
@@ -67,12 +68,24 @@
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
                 </svg>
             ),
-            CheckCircle: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>,
-            Database: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/></svg>,
+            Database: () => (
+                <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                    <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/>
+                    <path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/>
+                </svg>
+            ),
+            CheckCircle: () => (
+                <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
+                </svg>
+            ),
+            Flask: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 2v6l-6 12h16l-6-12V2"/></svg>,
+            Target: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
             Chart: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>,
             Activity: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>,
-            Flask: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 2v6l-6 12h16l-6-12V2"/></svg>,
-            Target: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Graduation: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
+            Briefcase: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>,
         };
 
         const App = () => {
@@ -91,7 +104,7 @@
                     bullets: [
                         "Supported delivery of graduate-level Revenue Management and Supply Chain Analytics courses for 60+ students.",
                         "Conducted review sessions explaining forecasting models, pricing optimization, and stochastic decision frameworks.",
-                        "Assisted faculty in evaluating analytical case studies involving demand planning and applied business modeling.",
+                        "Assisted faculty in evaluating analytical case studies involving demand planning, capacity allocation, and financial modeling.",
                         "Guided students in translating quantitative outputs into executive-ready recommendations.",
                         "Coordinated assignment feedback cycles ensuring timely grading and consistent academic clarity."
                     ],
@@ -103,22 +116,23 @@
                     period: "Jan 2025 – May 2025",
                     bullets: [
                         "Led operational analysis for a leading hospitality client operating on thin 3–5% profit margins.",
-                        "Analyzed 200+ SKUs using the Pareto Principle and SQL to isolate top items driving 65% of spend.",
+                        "Conducted SKU-level spend concentration analysis across 200+ inventory items using SQL and Pareto modeling.",
+                        "Identified top 12–15 items contributing to 65% of total procurement spend.",
                         "Designed a structured prime cost visibility model integrating COGS and labor inputs.",
                         "Developed mobile-ready Tableau dashboards enabling store managers to monitor reorder thresholds and margin risk.",
                         "Automated recurring reporting workflows, reducing manual data preparation effort by 40%."
                     ],
-                    summary: "Converted a manual procurement environment into a structured operational visibility system, improving cost control and reducing projected waste by 15%."
+                    summary: "Converted a manual procurement environment into a structured operational visibility system, improving cost control discipline and reducing projected waste by 15%."
                 },
                 {
                     company: "Accenture",
                     role: "Business Architecture Analyst",
                     period: "May 2022 – Jan 2024",
                     bullets: [
-                        "Led functional modernization for 5 enterprise marine insurance platforms with 14+ years of data legacy.",
+                        "Led functional modernization for 5 enterprise marine insurance platforms with 14+ years of legacy complexity.",
                         "Authored 65+ Business Requirement Documents (BRDs) covering underwriting, endorsements, and premium recalculations.",
-                        "Mapped complex ARP/MRP underwriting logic into structured functional specifications for technical teams.",
-                        "Facilitated cross-vendor coordination between stakeholders, QA, and technical delivery squads.",
+                        "Mapped ARP/MRP underwriting logic into structured functional specifications for technical teams.",
+                        "Facilitated cross-vendor coordination between business stakeholders, QA teams, and technical delivery squads.",
                         "Managed defect triage lifecycle using ServiceNow, ensuring prioritized backlog resolution on schedule.",
                         "Oversaw end-to-end UAT cycles to ensure business logic accuracy prior to production releases."
                     ],
@@ -139,14 +153,14 @@
                 }
             ];
 
-            const caseStudies = [
+            const analyticalProjects = [
                 {
                     title: "Healthcare Data Integrity & Geo-Analytics",
                     metric: "2.1M+ Records Validated",
                     problem: "Post-2017 clinical datasets exhibited inconsistent treatment documentation and regional reporting gaps.",
-                    action: "Performed large-scale SQL validation across 2.1M+ records and integrated geospatial visualization to identify treatment disparities.",
-                    result: "Restored reporting accuracy and provided geographic insights to support equitable resource distribution.",
-                    tags: ["System Assurance", "SQL", "Geo-Analytics"],
+                    action: "Performed large-scale SQL validation across 2,126,804 records and integrated geospatial visualization to identify treatment disparities.",
+                    result: "Restored reporting accuracy and provided geographic insights to support equitable healthcare resource distribution.",
+                    tags: ["Data Governance", "SQL", "Geo-Analytics"],
                     icon: "Flask"
                 },
                 {
@@ -154,24 +168,14 @@
                     metric: "25,441 Stats Validated",
                     problem: "Inconsistent valuation in athlete contracts due to performance vs. salary modeling gaps.",
                     action: "Built regression-based valuation model to evaluate performance-to-cost efficiency across player segments.",
-                    result: "Identified significant contract inefficiencies, providing a data-narrative model for optimized valuation.",
-                    tags: ["Predictive Analysis", "Python", "Modeling"],
+                    result: "Identified significant contract undervaluation for international players, providing an optimized valuation model.",
+                    tags: ["Predictive Analytics", "Python", "Modeling"],
                     icon: "Target"
-                },
-                {
-                    title: "IoT Systems Integration",
-                    metric: "Cloud Synchronized",
-                    problem: "Lack of affordable, real-time pollution monitoring in developing industrial zones.",
-                    action: "Engineered hardware-software bridge using Wi-Fi modules to push sensor data to a cloud-based dashboard.",
-                    result: "Successfully demonstrated a scalable real-time monitoring prototype for environmental health networks.",
-                    tags: ["IoT Systems", "Cloud Sync", "Hardware"],
-                    icon: "Globe"
                 }
             ];
 
             return (
                 <div className="min-h-screen">
-                    {/* Sticky Nav */}
                     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm' : 'bg-transparent py-6'}`}>
                         <div className="section-container flex justify-between items-center">
                             <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
@@ -186,8 +190,8 @@
                         </div>
                     </nav>
 
-                    {/* Hero */}
-                    <header className="pt-48 pb-32 bg-white border-b border-slate-100 hero-pattern relative overflow-hidden">
+                    {/* Hero Section */}
+                    <header className="pt-40 pb-24 bg-white border-b border-slate-100 hero-pattern relative overflow-hidden">
                         <div className="section-container grid lg:grid-cols-12 gap-16 items-center relative z-10">
                             <div className="lg:col-span-8 animate-reveal">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-red-700 rounded text-[10px] font-black uppercase tracking-widest mb-8 border border-red-100">
@@ -197,8 +201,8 @@
                                     Business Systems & <br/>
                                     <span className="text-[#8B0000]">Process Optimization</span>
                                 </h1>
-                                <p className="text-lg lg:text-xl text-slate-600 font-medium leading-relaxed max-w-3xl mb-12">
-                                    Actively seeking Business Analyst and Operations-focused roles where structured systems thinking and operational discipline drive measurable impact. Open to opportunities across the United States and internationally.
+                                <p className="text-lg lg:text-xl text-slate-600 font-medium leading-relaxed max-w-4xl mb-12">
+                                    Business Analyst experienced in enterprise systems modernization, operational governance, and structured process optimization. Focused on translating business requirements into stable, well-governed system solutions across regulated environments.
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <a href="mailto:a.chaitanyakrishna@wustl.edu" className="px-8 py-3.5 bg-[#8B0000] text-white rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:bg-slate-900 shadow-xl shadow-red-900/10">Contact Me</a>
@@ -208,8 +212,7 @@
                                 </div>
                             </div>
                             <div className="lg:col-span-4 flex justify-center">
-                                <div className="relative w-full max-w-[320px] aspect-[4/5] bg-[#EADBC8] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group transition-all duration-700">
-                                    {/* Your Real Photo Integration */}
+                                <div className="relative w-full max-w-[340px] aspect-[4/5] bg-[#EADBC8] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white group transition-all duration-700">
                                     <img 
                                         src="./a.chaitanya.krishna.jpg" 
                                         alt="Alapati Chaitanya Krishna" 
@@ -219,7 +222,6 @@
                                             e.target.nextSibling.style.display = 'block';
                                         }}
                                     />
-                                    {/* Fallback Image logic */}
                                     <div style={{display: 'none'}} className="w-full h-full bg-slate-200 flex items-center justify-center">
                                         <p className="text-slate-400 font-bold uppercase text-[10px]">Photo Not Found</p>
                                     </div>
@@ -228,10 +230,10 @@
                         </div>
                     </header>
 
-                    {/* Functional capabilities */}
+                    {/* Core Capabilities */}
                     <section className="py-24 bg-white border-b border-slate-50">
-                        <div className="section-container text-center">
-                            <h2 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.4em] mb-16">Core Functional Capabilities</h2>
+                        <div className="section-container">
+                            <h2 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.4em] mb-16 text-center">Core Functional Capabilities</h2>
                             <div className="grid md:grid-cols-3 gap-12 text-left">
                                 <div>
                                     <h3 className="font-bold text-slate-900 mb-6 border-b border-red-100 pb-2 flex items-center gap-2 uppercase tracking-tighter">
@@ -270,7 +272,40 @@
                         </div>
                     </section>
 
-                    {/* Professional Journey Section */}
+                    {/* Technical Toolkit */}
+                    <section className="py-24 bg-slate-50 border-b border-slate-100">
+                        <div className="section-container">
+                            <h2 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.4em] mb-12 text-center">Technical Toolkit</h2>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
+                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Business Tools</p>
+                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
+                                        {["SQL", "Excel", "Tableau", "Power BI", "ServiceNow", "JIRA", "Postman"].map(t => (
+                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
+                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Analytics & Methods</p>
+                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
+                                        {["Process Mapping", "Requirements Gathering", "Forecasting", "Demand Planning", "Root Cause Analysis", "UAT"].map(t => (
+                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
+                                    <p className="text-[10px] font-black uppercase text-slate-400 mb-4 tracking-widest italic leading-none">Data & Systems</p>
+                                    <div className="flex flex-wrap gap-2 font-bold text-[10px] uppercase text-slate-600">
+                                        {["API Validation", "Source-to-Target", "Documentation", "Requirement Governance"].map(t => (
+                                            <span key={t} className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-100">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Professional Journey */}
                     <section className="py-32" id="journey">
                         <div className="section-container">
                             <h2 className="text-2xl font-black uppercase tracking-tight mb-20 pb-2 border-b-4 border-slate-900 inline-block uppercase tracking-tighter italic">Professional Journey</h2>
@@ -291,7 +326,7 @@
                                             <ul className="space-y-6">
                                                 {exp.bullets.map((b, i) => (
                                                     <li key={i} className="flex gap-4 text-sm font-semibold text-slate-500 leading-relaxed">
-                                                        <div className="w-6 h-6 flex items-center justify-center bg-slate-100 text-red-700 rounded-lg shrink-0 mt-0.5"><UI.Check /></div>
+                                                        <div className="w-6 h-6 flex items-center justify-center bg-slate-100 text-red-700 rounded-lg shrink-0 mt-0.5 shadow-sm"><UI.Check /></div>
                                                         {b}
                                                     </li>
                                                 ))}
@@ -303,31 +338,31 @@
                         </div>
                     </section>
 
-                    {/* Project experience Section */}
-                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-10 my-10 shadow-2xl shadow-black/20" id="impact">
+                    {/* Analytical Projects */}
+                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-10 my-10 shadow-2xl" id="impact">
                         <div className="section-container">
-                            <h2 className="text-4xl lg:text-5xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left">Selected Projects</h2>
-                            <div className="grid md:grid-cols-3 gap-10">
-                                {caseStudies.map((p, i) => (
+                            <h2 className="text-4xl lg:text-5xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left tracking-tight">Analytical Research Projects</h2>
+                            <div className="grid md:grid-cols-2 gap-10">
+                                {analyticalProjects.map((p, i) => (
                                     <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all flex flex-col h-full group">
                                         <div className="flex justify-between items-start mb-10">
                                             <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition group-hover:scale-110">
-                                                <IconSelector name={p.icon} />
+                                                {p.icon === "Flask" ? <UI.Flask /> : <UI.Target />}
                                             </div>
                                             <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">{p.metric}</span>
                                         </div>
                                         <h3 className="text-2xl font-black mb-10 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-4">{p.title}</h3>
                                         <div className="space-y-8 flex-grow">
                                             <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2">Problem</p>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-2 tracking-widest border-l border-red-700 pl-2 italic">Objective</p>
                                                 <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.problem}</p>
                                             </div>
                                             <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2">Action</p>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-2 tracking-widest border-l border-red-700 pl-2 italic">Approach</p>
                                                 <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.action}</p>
                                             </div>
                                             <div className="p-4 bg-white/5 rounded-2xl border-l-4 border-red-600">
-                                                <p className="text-[10px] font-black uppercase text-red-500 mb-1 italic">Result</p>
+                                                <p className="text-[10px] font-black uppercase text-red-500 mb-2 italic">Impact</p>
                                                 <p className="text-sm font-black text-white leading-tight italic">{p.result}</p>
                                             </div>
                                         </div>
@@ -337,15 +372,15 @@
                         </div>
                     </section>
 
-                    {/* Academic Foundation section */}
+                    {/* Academic Foundation */}
                     <section className="py-32">
                         <div className="section-container">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-16 pb-2 border-b-4 border-slate-900 inline-block uppercase italic tracking-tighter">Academic Foundations</h2>
+                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-16 pb-2 border-b-4 border-slate-900 inline-block italic uppercase tracking-tighter">Academic Foundations</h2>
                             <div className="grid lg:grid-cols-2 gap-10 text-white">
                                 <div className="p-12 rounded-[4rem] washu-theme shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
-                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-red-700 font-black text-3xl mb-10 shadow-2xl z-10 relative">W</div>
+                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-red-700 font-black text-3xl mb-10 shadow-2xl z-10 relative shadow-red-900/50">W</div>
                                     <div className="relative z-10">
-                                        <h3 className="text-3xl font-black uppercase italic mb-4">MS Business Analytics</h3>
+                                        <h3 className="text-3xl font-black uppercase italic mb-4 underline decoration-white/20 underline-offset-8 text-white">MS Business Analytics</h3>
                                         <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">WashU Olin Business School • Dec 2025</p>
                                         <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
                                             Supply Chain Optimization, Stochastic Modeling, Operations Management. GPA 3.73.
@@ -353,9 +388,9 @@
                                     </div>
                                 </div>
                                 <div className="p-12 rounded-[4rem] gitam-theme shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
-                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-blue-800 font-black text-3xl mb-10 shadow-2xl z-10 relative">G</div>
+                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-blue-800 font-black text-3xl mb-10 shadow-2xl z-10 relative shadow-blue-900/50">G</div>
                                     <div className="relative z-10">
-                                        <h3 className="text-3xl font-black uppercase italic mb-4">B.Tech ECE</h3>
+                                        <h3 className="text-3xl font-black uppercase italic mb-4 underline decoration-white/20 underline-offset-8 text-white">B.Tech ECE</h3>
                                         <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">GITAM University • First Class Distinction</p>
                                         <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
                                             Electronics & Communication engineering with research in environmental data synchronization.
@@ -366,35 +401,35 @@
                         </div>
                     </section>
 
-                    {/* Engagement Section */}
+                    {/* Engagement */}
                     <section className="py-24 bg-white border-t border-slate-50">
                         <div className="section-container">
                             <h2 className="text-2xl font-black uppercase tracking-tight mb-12 border-b-2 border-slate-900 inline-block italic uppercase tracking-tighter">Leadership & Campus Engagement</h2>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner group transition hover:bg-white duration-500">
-                                    <div className="flex gap-6 items-start">
+                                    <div className="flex gap-6 items-start text-left">
                                         <div className="p-4 bg-red-700/20 text-red-600 rounded-2xl group-hover:bg-red-700 group-hover:text-white transition-all shadow-lg"><UI.Activity size={32}/></div>
                                         <div>
                                             <h4 className="font-bold text-xl text-slate-800 mb-2 uppercase tracking-tighter italic">Recreation Operations Lead</h4>
                                             <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-4 italic">May 2025 – July 2025</p>
                                             <ul className="text-sm font-semibold text-slate-500 leading-relaxed italic space-y-2 list-disc pl-4">
-                                                <li>Optimized facility operations and high-traffic summer programming workflows within a multi-use complex.</li>
-                                                <li>Enforced rigorous safety and compliance protocols while coordinating concurrent intercollegiate and university events.</li>
-                                                <li>Managed facility logistics and front-desk operational logic, demonstrating effective cross-functional leadership.</li>
+                                                <li>Managed facility operations and front-desk workflows during peak summer programming cycles.</li>
+                                                <li>Governed safety and regulatory compliance protocols for concurrent campus recreation services.</li>
+                                                <li>Demonstrated rapid decision-making and cross-functional leadership in a high-traffic environment.</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-inner group transition hover:bg-white duration-500">
-                                    <div className="flex gap-6 items-start">
+                                    <div className="flex gap-6 items-start text-left">
                                         <div className="p-4 bg-red-700/20 text-red-600 rounded-2xl group-hover:bg-red-700 group-hover:text-white transition-all shadow-lg"><UI.CheckCircle size={32}/></div>
                                         <div>
                                             <h4 className="font-bold text-xl text-slate-800 mb-2 uppercase tracking-tighter italic">Intramural Sports Official</h4>
                                             <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-4 italic">Jan 2025 – Dec 2025</p>
                                             <ul className="text-sm font-semibold text-slate-500 leading-relaxed italic space-y-2 list-disc pl-4">
-                                                <li>Mediated high-stakes conflicts and regulated inter-league rule interpretation under real-time competitive pressure.</li>
-                                                <li>Coordinated concurrent sporting events ensuring strict adherence to safety frameworks and inter-university regulations.</li>
-                                                <li>Demonstrated rapid decision-making and composure during high-intensity match settings.</li>
+                                                <li>Mediated high-stakes conflicts and regulated inter-league rule interpretation under competitive pressure.</li>
+                                                <li>Coordinated concurrent sporting events ensuring strict adherence to inter-university safety regulations.</li>
+                                                <li>Demonstrated real-time rule interpretation and composure during high-intensity match settings.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -407,12 +442,12 @@
                     <footer className="bg-white border-t border-slate-100 pt-32 pb-16">
                         <div className="section-container">
                             <div className="grid md:grid-cols-2 gap-20 pb-24 border-b border-slate-100">
-                                <div>
+                                <div className="text-center lg:text-left">
                                     <h2 className="text-4xl font-black tracking-tight mb-8 uppercase leading-none italic uppercase tracking-tighter text-slate-900">Let's Connect.</h2>
                                     <p className="text-lg text-slate-500 font-medium mb-12 leading-relaxed italic">
                                         Actively seeking Business Analyst and Operations-focused roles where structured systems thinking and operational discipline drive measurable impact.
                                     </p>
-                                    <div className="flex flex-wrap gap-4">
+                                    <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                                         <a href="mailto:a.chaitanyakrishna@wustl.edu" className="px-8 py-3.5 bg-[#8B0000] text-white rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:bg-slate-900 shadow-xl shadow-red-900/10">Email Me</a>
                                         <a href="tel:+13144139337" className="px-8 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-lg font-bold text-xs uppercase tracking-widest transition-all hover:border-red-700 shadow-sm flex items-center gap-2">
                                             <div className="w-4 h-4"><UI.Phone /></div> +1 (314) 413-9337
@@ -420,20 +455,23 @@
                                     </div>
                                 </div>
                                 <div className="flex flex-col justify-center space-y-12 bg-slate-50 p-12 rounded-[4rem] border border-slate-100 shadow-inner">
-                                    <div>
-                                        <p className="text-[10px] font-semibold uppercase text-red-700 tracking-[0.3em] mb-4 flex items-center gap-2 italic">
+                                    <div className="text-center lg:text-left">
+                                        <p className="text-[10px] font-semibold uppercase text-red-700 tracking-[0.3em] mb-4 flex items-center justify-center lg:justify-start gap-2 italic leading-none">
                                             <div className="w-4 h-4"><UI.Shield /></div> Work Authorization
                                         </p>
-                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800">F-1 STEM OPT Work Authorization — 36 Months Available</p>
+                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800 leading-tight">F-1 STEM OPT Work Authorization — 36 Months Available</p>
                                     </div>
-                                    <div>
-                                        <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-[0.3em] mb-4 flex items-center gap-2 italic">
+                                    <div className="text-center lg:text-left">
+                                        <p className="text-[10px] font-semibold uppercase text-slate-400 tracking-[0.3em] mb-4 flex items-center justify-center lg:justify-start gap-2 italic leading-none">
                                             <div className="w-4 h-4"><UI.Globe /></div> Location Flexibility
                                         </p>
-                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800">Open to relocation across the U.S. and internationally.</p>
+                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800 leading-tight">Open to relocation across the U.S. and internationally.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className="pt-12 text-center">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 italic">Alapati Chaitanya Krishna • Strategic Portfolio • 2025</p>
                         </div>
                     </footer>
                 </div>
@@ -443,7 +481,6 @@
         const IconSelector = ({ name }) => {
             if (name === "Flask") return <UI.Flask />;
             if (name === "Target") return <UI.Target />;
-            if (name === "Globe") return <UI.Globe />;
             return <UI.Chart />;
         };
 
