@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alapati Chaitanya Krishna | Strategic Analyst Showcase</title>
+    <title>Alapati Chaitanya Krishna | Enterprise Systems & Operational Strategy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -22,37 +22,21 @@
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--bone);
-            scroll-behavior: smooth; 
             color: #1e293b;
+            scroll-behavior: smooth; 
         }
 
-        .hero-pattern {
-            background-color: #ffffff;
-            background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.2px);
-            background-size: 30px 30px;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .heading-giant { font-size: clamp(2.5rem, 8vw, 6rem); }
-        .text-narrative { font-size: 1.05rem; line-height: 1.75; }
-
-        /* Thematic Backgrounds */
+        .section-container { max-width: 1050px; margin: 0 auto; padding: 0 1.5rem; }
+        .hero-pattern { background-color: #ffffff; background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.2px); background-size: 30px 30px; }
+        
         .washu-theme { 
-            background: linear-gradient(rgba(165, 29, 45, 0.92), rgba(120, 10, 20, 0.96)), url('https://images.unsplash.com/photo-1541339907198-e08756defe93?q=80&w=2070&auto=format&fit=crop'); 
+            background: linear-gradient(rgba(165, 29, 45, 0.94), rgba(120, 10, 20, 0.98)), url('https://images.unsplash.com/photo-1541339907198-e08756defe93?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; background-position: center;
         }
         .gitam-theme { 
-            background: linear-gradient(rgba(0, 81, 162, 0.92), rgba(0, 51, 102, 0.96)), url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop'); 
+            background: linear-gradient(rgba(0, 81, 162, 0.94), rgba(0, 51, 102, 0.98)), url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1986&auto=format&fit=crop'); 
             background-size: cover; background-position: center;
         }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-reveal { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </head>
 <body>
@@ -61,185 +45,118 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Optimized UI Object to eliminate all runtime errors
         const UI = {
             Shield: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
             Plane: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17.8 19.2l-1.4-1.4m0 0l-4-4V3.5h-1v10.3l-4 4-1.4 1.4m11.8 0a2 2 0 11-2.8-2.8 2 2 0 012.8 2.8z"/></svg>,
-            Award: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"/></svg>,
-            Graduation: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
-            Briefcase: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>,
+            Check: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>,
+            File: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>,
             Chart: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>,
-            Database: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+            Award: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"/></svg>,
             Flask: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M10 2v6l-6 12h16l-6-12V2"/></svg>,
             Target: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
             Globe: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>,
-            Check: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>,
-            Linkedin: () => (
-                <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.2h.07c.65-1.23 2.23-2.52 4.6-2.52 4.92 0 5.83 3.24 5.83 7.45V24h-5v-7.98c0-1.9-.03-4.34-2.65-4.34-2.66 0-3.07 2.08-3.07 4.21V24h-5V8z"/>
-                </svg>
-            ),
-            Mail: () => (
-                <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
-                </svg>
-            ),
-            Activity: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Linkedin: () => <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>,
+            Mail: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>,
+            Graduation: () => <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
         };
 
         const App = () => {
             const [scrolled, setScrolled] = useState(false);
-
             useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
+                const handleScroll = () => setScrolled(window.scrollY > 20);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const skills = [
-                { cat: "SCM & Operations", items: ["Inventory Optimization", "Demand Planning", "P&L Stabilization", "Procurement Strategy", "Stochastic Modeling"] },
-                { cat: "Business Analysis", items: ["BRD/FRD Documentation", "Requirement Engineering", "Stakeholder Management", "Gap Analysis", "Agile & Waterfall"] },
-                { cat: "Data & Validation", items: ["SQL Data Correction", "Python & R Modeling", "Machine Learning", "Tableau & Power BI", "Outliers Analysis"] },
-                { cat: "Enterprise Ecosystems", items: ["MS Dynamics 365", "ServiceNow", "Postman API Testing", "Kafka Data Validation", "JIRA & Confluence"] }
-            ];
-
             const experiences = [
                 {
-                    company: "Washington University in St. Louis",
-                    role: "Graduate Teaching Assistant — Revenue Management",
-                    period: "Aug 2025 - Dec 2025",
-                    type: "washu",
-                    impact: "Quantitative Leadership for 50+ Graduate Students",
-                    bullets: [
-                        "Mentored 50+ students in applying stochastic models to commercial pricing frameworks.",
-                        "Led technical workshops on prescriptive analytics and demand forecasting.",
-                        "Re-engineered grading feedback loops to improve turnaround speed by 30%."
-                    ],
-                    summary: "As a bridge between theoretical mathematics and commercial strategy, I clarify advanced pricing optimization frameworks for Olin’s graduate analytics cohort. I focus on academic rigor while enabling students to translate complex datasets into actionable business decisions for enterprise environments."
-                },
-                {
-                    company: "Center for Experiential Learning (CEL)",
-                    role: "Strategic Consultant — BI & Supply Chain",
-                    period: "Jan 2025 - May 2025",
-                    type: "washu",
-                    impact: "15% Waste Reduction Achievement",
-                    bullets: [
-                        "Identified cost drivers for Sugarfire BBQ within thin 3–5% margins.",
-                        "Analyzed 200+ SKUs using SQL and Pareto logic to isolate top items driving 65% of spend.",
-                        "Engineered mobile-optimized Tableau dashboards for real-time inventory alerts."
-                    ],
-                    summary: "I addressed a critical lack of inventory visibility across multiple restaurant locations. By transforming manual tracking into an automated, data-driven pipeline, I provided leadership with a scalable tool projected to significantly slash manual reporting workload."
-                },
-                {
                     company: "Accenture",
-                    role: "Business Architecture Analyst (Strategic Lead)",
+                    role: "Business Architecture Analyst",
                     period: "May 2022 - Jan 2024",
-                    type: "accenture",
-                    impact: "100% Backlog Resolution for Legacy Systems",
                     bullets: [
-                        "Led functional architecture for 5 marine insurance apps with 14+ years of data legacy.",
-                        "Authored 65+ BRDs mapping complex ARP logic to modern system specifications.",
-                        "Cleared a 100% project backlog on schedule through rigorous defect triage in ServiceNow."
+                        "Authored 65+ BRDs across 5 marine insurance applications, translating complex ARP/MRP underwriting logic into technical specifications.",
+                        "Led the functional modernization of 14-year legacy platforms, clearing a 100% project backlog through structured defect triage.",
+                        "Reconciled cross-team functional silos to ensure all system endorsements and premium recalculation flows met 100% audit compliance."
                     ],
-                    summary: "Transitioning to a lead functional role, I acted as the conduit between high-level Underwriting teams and technical development squads. I successfully reconciled communication gaps and ensured 100% regulatory audit compliance across enterprise platforms."
+                    summary: "Specialized in bridging high-level underwriting operations and technical squad delivery. I focused on system stabilization and governance in regulated financial environments."
                 },
                 {
                     company: "Accenture",
                     role: "Test Associate (Data Integrity & QA)",
                     period: "Aug 2021 - Apr 2022",
-                    type: "accenture",
-                    impact: "100% Source-to-Target Data Accuracy",
                     bullets: [
-                        "Executed 150+ SQL-based scripts ensuring 100% data reflection for healthcare registries.",
-                        "Utilized Postman and Kafka to validate API integrations and real-time data streaming.",
-                        "Reduced manual validation effort by 25% through an early-stage error detection strategy."
+                        "Validated source-to-target integrity for physician and medication registries with 100% data reflection accuracy.",
+                        "Managed API data stream validation using Postman and Kafka to ensure reliable real-time reporting.",
+                        "Developed automated SQL-based validation strategies that reduced manual testing overhead by 25%."
                     ],
-                    summary: "Ensuring the 'Digital Truth' for complex physician and medication datasets, I focused on absolute synchronization between databases and portals. My work maintained high patient safety standards and stakeholder trust in reporting accuracy."
+                    summary: "Ensured the synchronization of enterprise healthcare datasets, maintaining reporting trust and patient safety through rigorous data verification."
                 }
             ];
 
-            const archives = [
+            const caseStudies = [
                 {
-                    title: "Crohn's Disease Big Data Research",
-                    metric: "2,126,804 Records",
-                    desc: "Architected a cleaning pipeline using Hadoop & PySpark to resolve a 48% gap in missing values and reveal treatment disparities post-2017.",
-                    tags: ["Big Data", "Hadoop", "PySpark"],
+                    title: "Sugarfire BBQ Pocket P&L",
+                    metric: "15% Waste reduction",
+                    problem: "Independent restaurant chains operating on thin 3–5% margins lacked automated visibility into prime costs.",
+                    action: "Built financial intelligence framework integrating POS + distributor data. Identified top 15 cost drivers accounting for 65% of spend.",
+                    result: "Delivered mobile executive dashboard with margin flagging; projected to reduce perishable waste by 15%.",
+                    tags: ["Financial Analytics", "SQL", "Tableau"],
+                    icon: "Chart"
+                },
+                {
+                    title: "Healthcare Data Integrity",
+                    metric: "2.1M+ Records Validated",
+                    problem: "Clinical datasets post-2017 exhibited a 48% gap in treatment consistency and missing treatement records.",
+                    action: "Built Hadoop + PySpark data cleaning pipeline to remove 276K+ duplicates and validate source-to-target consistency.",
+                    result: "Achieved verified data integrity for 2,126,804 records and revealed regional access disparities using GeoPandas.",
+                    tags: ["Data Governance", "Hadoop", "Python"],
                     icon: "Flask"
                 },
                 {
-                    title: "MLB Salary Market Efficiency",
-                    metric: "25,441 Data Records",
-                    desc: "Conducted high-precision regression analysis on 25,441 player records to evaluate valuation vs. performance and identify contract inefficiencies.",
-                    tags: ["Python", "Regression", "Predictive"],
+                    title: "MLB Performance Analysis",
+                    metric: "25,441 Stats Validated",
+                    problem: "Valuation inefficiencies in athlete contracts due to performance vs. salary modeling gaps.",
+                    action: "Conducted multi-feature regression on 25,441 records to evaluate valuation efficiency for international players.",
+                    result: "Provided a data-narrative model identifying significant contract undervaluation based on performance benchmarks.",
+                    tags: ["Predictive Analytics", "ML", "Python"],
                     icon: "Target"
-                },
-                {
-                    title: "EV Adoption Utility Mapping",
-                    metric: "Infrastructure Strategy",
-                    desc: "Visualized registration trends for 150K+ EVs in WA State. Developed grid-readiness recommendations based on regional adoption density.",
-                    tags: ["Tableau", "Forecasting", "Trends"],
-                    icon: "Globe"
                 }
             ];
 
             return (
                 <div className="min-h-screen">
-                    {/* Status Banner */}
-                    <div className="bg-[#8B0000] text-white py-2.5 px-6 text-center text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] sticky top-0 z-[100] border-b border-white/10 shadow-lg flex items-center justify-center gap-3">
-                        <div className="w-4 h-4"><UI.Shield /></div>
-                        <span>F-1 STEM OPT Authorized (36 Months) • US & International Relocation Ready</span>
-                    </div>
-
-                    {/* Nav */}
-                    <nav className={`w-full z-[90] transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md fixed top-[42px]' : 'bg-transparent relative'}`}>
-                        <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-                            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-                                <div className="w-10 h-10 bg-[#8B0000] rounded-lg flex items-center justify-center text-white font-black text-xl shadow-lg transition group-hover:rotate-12">A</div>
-                                <span className="font-extrabold text-xs md:text-sm tracking-tighter uppercase text-slate-800">Alapati Chaitanya Krishna</span>
+                    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm' : 'bg-transparent py-6'}`}>
+                        <div className="section-container flex justify-between items-center">
+                            <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+                                <div className="w-8 h-8 bg-[#8B0000] text-white flex items-center justify-center font-black rounded group-hover:rotate-12 transition">A</div>
+                                <span className="font-bold tracking-tight text-slate-800 uppercase text-xs">Alapati Chaitanya Krishna</span>
                             </div>
-                            <div className="hidden lg:flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                                <a href="#journey" className="hover:text-red-700 transition-colors">The Journey</a>
-                                <a href="#expertise" className="hover:text-red-700 transition-colors">Expertise</a>
-                                <a href="#impact" className="hover:text-red-700 transition-colors">Impact</a>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white shadow-sm border border-slate-100 rounded-full hover:bg-red-700 hover:text-white transition-all text-slate-500 p-2.5"><UI.Linkedin /></a>
-                                <a href="mailto:a.chaitanyakrishna@wustl.edu" className="w-10 h-10 flex items-center justify-center bg-white shadow-sm border border-slate-100 rounded-full hover:bg-red-700 hover:text-white transition-all text-slate-500 p-2.5"><UI.Mail /></a>
+                            <div className="flex items-center gap-6">
+                                <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="w-5 h-5 text-slate-400 hover:text-[#0077B5] transition"><UI.Linkedin /></a>
+                                <a href="/resume.pdf" download className="px-5 py-2 bg-slate-900 text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-red-700 transition">Download Resume</a>
                             </div>
                         </div>
                     </nav>
 
-                    {/* Hero */}
-                    <header className="bg-white border-b border-slate-100 hero-pattern relative overflow-hidden" id="about">
-                        <div className="max-w-7xl mx-auto px-8 py-24 lg:py-48 grid lg:grid-cols-12 gap-16 items-center relative z-10">
-                            <div className="lg:col-span-7">
-                                <div className="flex flex-wrap gap-3 mb-10">
-                                    <div className="px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-[10px] font-bold uppercase tracking-widest border border-red-100 shadow-sm">WashU Olin MSBA '25</div>
-                                    <div className="px-4 py-1.5 bg-[#EADBC8] text-slate-800 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">GPA 3.73 / 4.0</div>
-                                    <div className="px-4 py-1.5 bg-slate-900 text-white rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm flex items-center gap-2">
-                                        <div className="w-3 h-3 text-red-500"><UI.Globe /></div> Relocation Ready
-                                    </div>
-                                </div>
-                                <h1 className="heading-giant font-black leading-[0.82] tracking-tighter mb-10 text-slate-900 uppercase">
-                                    Strategic <br/>
-                                    <span className="text-[#8B0000] italic underline decoration-red-100 decoration-8 underline-offset-4">Analysis.</span> <br/>
-                                    Impact Led.
+                    {/* Hero Section */}
+                    <header className="pt-48 pb-32 bg-white border-b border-slate-100 hero-pattern relative overflow-hidden">
+                        <div className="section-container grid lg:grid-cols-12 gap-16 items-center relative z-10">
+                            <div className="lg:col-span-8 animate-reveal">
+                                <h1 className="text-4xl lg:text-[4.8rem] font-extrabold tracking-tight text-slate-900 mb-8 leading-[1] uppercase">
+                                    Enterprise Systems & <br/>
+                                    <span className="text-[#8B0000]">Operational Strategy</span>
                                 </h1>
-                                <p className="text-xl lg:text-3xl text-slate-500 font-medium leading-tight max-w-2xl mb-12">
-                                    Strategic Analyst with 3.5+ years of experience bridging **Technical Architecture** and **Operational Integrity**. 
+                                <p className="text-lg lg:text-xl text-slate-600 font-medium leading-relaxed max-w-3xl mb-12">
+                                    Business Analyst specializing in operational stabilization, legacy system modernization, and data integrity governance across high-precision environments. Driving outcomes through SQL validation, financial intelligence modeling, and cross-team functional alignment.
                                 </p>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-slate-100">
-                                    <div><p className="text-4xl font-black text-slate-900 tracking-tighter">65+</p><p className="text-[10px] font-bold uppercase text-slate-400 mt-1 tracking-widest">BRD Specs</p></div>
-                                    <div><p className="text-4xl font-black text-slate-900 tracking-tighter">2.1M</p><p className="text-[10px] font-bold uppercase text-slate-400 mt-1 tracking-widest">Health Records</p></div>
-                                    <div><p className="text-4xl font-black text-slate-900 tracking-tighter">25K+</p><p className="text-[10px] font-bold uppercase text-slate-400 mt-1 tracking-widest">Analytics Stats</p></div>
-                                    <div><p className="text-4xl font-black text-slate-900 tracking-tighter">3.5+</p><p className="text-[10px] font-bold uppercase text-slate-400 mt-1 tracking-widest">Years Exp</p></div>
+                                <div className="flex flex-wrap gap-4">
+                                    <a href="mailto:a.chaitanyakrishna@wustl.edu" className="btn-primary">Inquire Opportunity</a>
+                                    <a href="#journey" className="btn-secondary">View Case Studies</a>
                                 </div>
                             </div>
-
-                            <div className="lg:col-span-5 flex justify-center">
-                                <div className="relative aspect-[4/5] w-full max-w-md bg-[#EADBC8] rounded-[4rem] overflow-hidden shadow-2xl border-[16px] border-white group transition-all duration-1000 animate-reveal">
-                                    {/* Suit Avatar */}
-                                    <svg viewBox="0 0 400 500" className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-1000">
+                            <div className="lg:col-span-4 flex justify-center">
+                                <div className="relative w-full max-w-[320px] aspect-[4/5] bg-[#EADBC8] rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                                    <svg viewBox="0 0 400 500" className="w-full h-full">
                                         <rect width="400" height="500" fill="#EADBC8" />
                                         <path d="M100 500 Q200 130 300 500" fill="#D2B48C" />
                                         <path d="M170 500 L200 290 L230 500" fill="#FFF" />
@@ -247,49 +164,103 @@
                                         <circle cx="200" cy="180" r="75" fill="#FFE4C4" />
                                         <path d="M130 440 H270 V470 H130 Z" fill="#8B0000" rx="10" />
                                     </svg>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex flex-col justify-end p-12 text-white">
-                                        <p className="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-60 italic">Profile Persona</p>
-                                        <p className="text-3xl font-black tracking-tight leading-none italic uppercase">Strategic. <br/> Adaptable. <br/> Global.</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute -bottom-40 -left-40 opacity-[0.03] pointer-events-none scale-[2.5] rotate-12"><UI.Graduation /></div>
                     </header>
 
-                    {/* Detailed Journey Section */}
-                    <section className="py-32 bg-[#F8F9FA]" id="journey">
-                        <div className="max-w-7xl mx-auto px-8">
-                            <h2 className="text-5xl lg:text-[9rem] font-black tracking-tighter uppercase italic opacity-10 mb-24 text-center lg:text-left">Journey</h2>
-                            
-                            <div className="space-y-40">
-                                {experiences.map((item, idx) => (
-                                    <div key={idx} className="story-card relative group p-1.5 rounded-[5.5rem] transition-all duration-700 bg-white/30 hover:shadow-2xl">
-                                        <div className="glass-card p-10 lg:p-16 rounded-[5rem] transition-all duration-700 bg-white shadow-sm relative overflow-hidden">
-                                            <div className="grid lg:grid-cols-12 gap-16 relative z-10">
-                                                <div className="lg:col-span-5 border-r border-slate-100 pr-12">
-                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-8 shadow-xl transform transition group-hover:rotate-6 
-                                                        ${item.type === 'washu' ? 'bg-[#A51D2D]' : 'bg-[#001E60]'}`}>
-                                                        {item.type === 'washu' ? <div className="w-8 h-8"><UI.Graduation /></div> : <div className="w-8 h-8"><UI.Briefcase /></div>}
-                                                    </div>
-                                                    <h3 className="text-3xl font-black leading-tight mb-2 tracking-tight uppercase">{item.company}</h3>
-                                                    <p className={`text-xs font-black uppercase tracking-widest mb-10 ${item.type === 'washu' ? 'text-red-700' : 'text-indigo-800'}`}>{item.role}</p>
-                                                    
-                                                    <ul className="space-y-5 mb-10">
-                                                        {item.bullets.map((bullet, bIdx) => (
-                                                            <li key={bIdx} className="flex gap-3 text-sm font-semibold text-slate-500 leading-snug">
-                                                                <div className="w-5 h-5 flex items-center justify-center text-red-700 shrink-0 mt-0.5"><UI.Check /></div>
-                                                                {bullet}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                                <div className="lg:col-span-7 flex flex-col justify-center bg-slate-50/50 p-10 lg:p-14 rounded-[4rem] border border-slate-100 shadow-inner group-hover:bg-white transition-all duration-500">
-                                                    <p className="text-[10px] font-black uppercase text-red-400 mb-4 tracking-widest italic leading-none">Career Synthesis</p>
-                                                    <p className="text-lg lg:text-xl font-medium text-slate-600 leading-relaxed italic border-l-8 border-slate-200 pl-8">
-                                                        "{item.summary}"
-                                                    </p>
-                                                </div>
+                    {/* Functional Capabilities Grid */}
+                    <section className="py-24 bg-white border-b border-slate-50">
+                        <div className="section-container">
+                            <h2 className="text-[11px] font-black uppercase text-red-700 tracking-[0.4em] mb-12 text-center">Core Functional Capabilities</h2>
+                            <div className="grid md:grid-cols-3 gap-12">
+                                <div>
+                                    <h3 className="font-bold text-slate-900 mb-6 border-b pb-2">Enterprise Systems</h3>
+                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> BRD / FRD Documentation</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Legacy Modernization</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Underwriting Logic Mapping</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-slate-900 mb-6 border-b pb-2">Data Governance</h3>
+                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Source-to-Target Validation</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> SQL Data Verification</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Defect Triage & Lifecycle</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-slate-900 mb-6 border-b pb-2">Margin Strategy</h3>
+                                    <ul className="space-y-3 text-sm font-semibold text-slate-500">
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Prime Cost Modeling</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> Inventory Optimization</li>
+                                        <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-red-700"/> BI Dashboard Strategy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Professional Experience Section */}
+                    <section className="py-32" id="journey">
+                        <div className="section-container">
+                            <h2 className="text-2xl font-black uppercase tracking-tight mb-20 pb-4 border-b-4 border-slate-900 inline-block">Professional Journey</h2>
+                            <div className="space-y-32">
+                                {experiences.map((exp, idx) => (
+                                    <div key={idx} className="grid lg:grid-cols-12 gap-12 group transition duration-500">
+                                        <div className="lg:col-span-5">
+                                            <p className="text-xs font-black text-red-700 uppercase tracking-widest mb-2 italic">{exp.period}</p>
+                                            <h3 className="text-3xl font-bold text-slate-900 leading-none mb-3 uppercase tracking-tighter">{exp.role}</h3>
+                                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Accenture – India</p>
+                                            <div className="mt-10 p-8 bg-white rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all duration-500 italic">
+                                                <p className="text-lg font-medium text-slate-600 leading-relaxed border-l-4 border-red-700 pl-6">
+                                                    "{exp.summary}"
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="lg:col-span-7 pt-10">
+                                            <ul className="space-y-6">
+                                                {exp.bullets.map((b, i) => (
+                                                    <li key={i} className="flex gap-4 text-sm font-semibold text-slate-500 leading-relaxed">
+                                                        <div className="w-6 h-6 flex items-center justify-center bg-slate-100 text-red-700 rounded-lg shrink-0 mt-0.5"><UI.Check /></div>
+                                                        {b}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Case Studies Section */}
+                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-10 my-10" id="impact">
+                        <div className="section-container">
+                            <h2 className="text-4xl lg:text-7xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left">Strategic Case Studies</h2>
+                            <div className="grid md:grid-cols-3 gap-10">
+                                {caseStudies.map((p, i) => (
+                                    <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all flex flex-col h-full shadow-2xl group">
+                                        <div className="flex justify-between items-start mb-10">
+                                            <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition group-hover:scale-110">
+                                                {p.icon === "Chart" ? <UI.Chart /> : p.icon === "Flask" ? <UI.Flask /> : <UI.Target />}
+                                            </div>
+                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">{p.metric}</span>
+                                        </div>
+                                        <h3 className="text-2xl font-black mb-10 uppercase italic tracking-tighter leading-tight">{p.title}</h3>
+                                        <div className="space-y-8 flex-grow">
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2">Problem</p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.problem}</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2">Action</p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.action}</p>
+                                            </div>
+                                            <div className="p-4 bg-white/5 rounded-2xl border-l-4 border-red-600">
+                                                <p className="text-[10px] font-black uppercase text-red-500 mb-1 italic">Result</p>
+                                                <p className="text-sm font-black text-white leading-tight italic">{p.result}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -298,162 +269,71 @@
                         </div>
                     </section>
 
-                    {/* Capability Section */}
-                    <section className="py-32 bg-white" id="expertise">
-                        <div className="max-w-7xl mx-auto px-8 text-center lg:text-left">
-                            <div className="mb-24">
-                                <p className="text-[#8B0000] font-black text-[10px] uppercase tracking-[0.5em] mb-4">Functional Capability</p>
-                                <h2 className="text-5xl lg:text-8xl font-black tracking-tighter uppercase leading-none italic text-center">Professional Stack</h2>
-                            </div>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-32">
-                                {skills.map((s, i) => (
-                                    <div key={i} className="group border-t-4 border-slate-100 pt-8 hover:border-red-700 transition-all duration-500">
-                                        <h4 className="text-red-700 font-black text-[10px] uppercase tracking-[0.3em] mb-10">{s.cat}</h4>
-                                        <ul className="space-y-4">
-                                            {s.items.map(it => (
-                                                <li key={it} className="text-sm font-bold text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-3">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-red-700 shrink-0" /> {it}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            <div className="p-12 lg:p-24 bg-slate-900 text-white rounded-[5rem] relative overflow-hidden group shadow-2xl">
-                                <div className="relative z-10 grid lg:grid-cols-2 gap-20 items-center">
-                                    <div className="space-y-12">
-                                        <h3 className="text-5xl lg:text-6xl font-black italic leading-[1.1] tracking-tight text-white uppercase underline decoration-red-700 decoration-8 underline-offset-4">Execution <br/> Into <br/> Impact.</h3>
-                                        <p className="text-slate-400 text-lg lg:text-xl font-medium max-w-lg leading-relaxed italic mx-auto lg:mx-0">
-                                            Stabilizing operational complexity through rigorous functional mapping. I bridge the technical divide to ensure every specification meets business intent.
+                    {/* Academic Foundation Section */}
+                    <section className="py-32">
+                        <div className="section-container">
+                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-16 pb-2 border-b-4 border-slate-900 inline-block">Academic Foundations</h2>
+                            <div className="grid lg:grid-cols-2 gap-10">
+                                <div className="p-12 rounded-[4rem] washu-theme text-white shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
+                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-red-700 font-black text-3xl mb-10 shadow-2xl z-10 relative">W</div>
+                                    <div className="relative z-10">
+                                        <h3 className="text-3xl font-black uppercase italic mb-4">MS Business Analytics</h3>
+                                        <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">WashU Olin Business School • Dec 2025</p>
+                                        <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
+                                            Supply Chain Optimization, Stochastic Modeling, Machine Learning for Business, Operations Management. GPA 3.73.
                                         </p>
-                                        <div className="flex justify-center lg:justify-start gap-16 border-t border-white/10 pt-12">
-                                            <div className="group text-center lg:text-left"><p className="text-7xl font-black text-red-600 tracking-tighter transition group-hover:scale-110">65+</p><p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mt-2">Enterprise Specs</p></div>
-                                            <div className="group text-center lg:text-left"><p className="text-7xl font-black text-red-600 tracking-tighter transition group-hover:scale-110">98%</p><p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mt-2">Audit Compliance</p></div>
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-8">
-                                        {[
-                                            { icon: <UI.Chart />, title: "Visualization", desc: "Tableau & Power BI Analysis" },
-                                            { icon: <div className="w-12 h-12 text-red-500 transform group-hover:scale-110 transition-transform"><svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>, title: "Functional SQL", desc: "Data Validation Specialists" },
-                                            { icon: <div className="w-12 h-12 text-red-500 transform group-hover:scale-110 transition-transform"><UI.Globe /></div>, title: "Supply Chain", desc: "Inventory & Demand Logic" },
-                                            { icon: <div className="w-12 h-12 text-red-500 transform group-hover:scale-110 transition-transform"><UI.Shield /></div>, title: "QA Rigor", desc: "E2E UAT Specialist" }
-                                        ].map((tool, i) => (
-                                            <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-red-700/20 transition-all duration-500 group flex flex-col items-center text-center">
-                                                <div className="mb-6">{i === 0 ? <div className="w-12 h-12 text-red-500 transform group-hover:scale-110 transition-transform">{tool.icon}</div> : tool.icon}</div>
-                                                <p className="font-black text-[10px] uppercase tracking-[0.2em] mb-3 text-white">{tool.title}</p>
-                                                <p className="text-[10px] text-slate-400 font-bold leading-relaxed italic">{tool.desc}</p>
-                                            </div>
-                                        ))}
                                     </div>
                                 </div>
-                                <div className="absolute top-0 right-0 opacity-[0.02] pointer-events-none scale-[2.0] rotate-12 w-full h-full"><UI.Database /></div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Impact Archive */}
-                    <section className="py-32 bg-[#FDFCFB]" id="impact">
-                        <div className="max-w-7xl mx-auto px-8">
-                            <div className="text-center mb-24 relative">
-                                <h2 className="text-[10px] uppercase font-black tracking-[0.5em] text-red-700 mb-4 italic uppercase">Impact Portfolio</h2>
-                                <p className="text-5xl lg:text-[11rem] font-black tracking-tighter leading-none mb-10 opacity-[0.03] uppercase select-none absolute left-0 right-0 top-0">Evidence</p>
-                                <p className="text-5xl lg:text-9xl font-black tracking-tighter leading-none relative z-10 uppercase italic">Research Archive</p>
-                            </div>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                                {archives.map((p, i) => (
-                                    <div key={i} className="bg-white p-12 rounded-[5rem] border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-700 group flex flex-col h-full hover:-translate-y-5">
-                                        <div className="flex justify-between items-start mb-12">
-                                            <div className="w-16 h-16 bg-slate-50 text-red-700 rounded-3xl flex items-center justify-center group-hover:bg-red-700 group-hover:text-white transition-all duration-500 shadow-sm p-4">
-                                                <IconSelector name={p.icon} />
-                                            </div>
-                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 px-4 py-2 rounded-full border border-slate-100 shadow-sm">{p.metric}</span>
-                                        </div>
-                                        <h4 className="text-2xl font-black mb-6 group-hover:text-red-700 transition-colors tracking-tight uppercase leading-tight">{p.title}</h4>
-                                        <p className="text-slate-500 font-medium leading-relaxed mb-10 flex-grow text-sm italic">"{p.desc}"</p>
-                                        <div className="flex flex-wrap gap-2 pt-10 border-t border-slate-50">
-                                            {p.tags.map(t => <span key={t} className="px-4 py-2 bg-slate-50 text-slate-600 text-[10px] font-black rounded-2xl uppercase tracking-widest border border-slate-100 shadow-sm">{t}</span>)}
-                                        </div>
+                                <div className="p-12 rounded-[4rem] gitam-theme text-white shadow-2xl relative overflow-hidden group hover:scale-[1.01] transition-all">
+                                    <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-blue-800 font-black text-3xl mb-10 shadow-2xl z-10 relative">G</div>
+                                    <div className="relative z-10">
+                                        <h3 className="text-3xl font-black uppercase italic mb-4">B.Tech ECE</h3>
+                                        <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-8 border-b border-white/10 pb-2">GITAM University • First Class Distinction</p>
+                                        <p className="text-sm font-medium text-white/90 leading-relaxed max-w-sm italic">
+                                            Digital Signal Processing, IoT Research, and environmental data synchronization logic.
+                                        </p>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Global Origins: Background Themes */}
-                    <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
-                        <div className="max-w-7xl mx-auto px-10 relative z-10">
-                            <div className="grid lg:grid-cols-2 gap-24 items-center">
-                                <div className="space-y-12">
-                                    <h2 className="text-6xl lg:text-7xl font-black tracking-tighter leading-none uppercase italic"><span className="text-red-600 underline decoration-white/20 underline-offset-8">Global</span> Origins.</h2>
-                                    <div className="space-y-12">
-                                        <div className="flex gap-10 group relative p-10 rounded-[4rem] border border-white/10 washu-theme transition-all duration-700 overflow-hidden shadow-2xl text-slate-900">
-                                            <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center text-red-700 font-black text-3xl shrink-0 z-10 group-hover:rotate-6 transition-transform">W</div>
-                                            <div className="z-10">
-                                                <p className="text-3xl font-black leading-none mb-4 uppercase tracking-tighter italic">MS Business Analytics</p>
-                                                <p className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-6 border-b border-white/20 pb-2">Olin Business School • 3.73 GPA</p>
-                                                <p className="text-sm font-medium leading-relaxed max-w-sm italic">Supply Chain, Machine Learning, Prescriptive Analytics, Operations Management.</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-10 group relative p-10 rounded-[4rem] border border-white/10 gitam-theme transition-all duration-700 overflow-hidden shadow-2xl text-slate-900 text-center lg:text-left">
-                                            <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center text-blue-800 font-black text-3xl shrink-0 z-10 group-hover:-rotate-6 transition-transform mx-auto lg:mx-0">G</div>
-                                            <div className="z-10">
-                                                <p className="text-3xl font-black leading-none mb-4 uppercase tracking-tighter italic">B.Tech ECE</p>
-                                                <p className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-6 border-b border-white/20 pb-2">GITAM University • 8.58 CGPA</p>
-                                                <p className="text-sm font-medium leading-relaxed max-w-sm italic">Electronics & Communication. Honors: First Class with Distinction.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="relative glass-card p-12 lg:p-24 rounded-[5.5rem] overflow-hidden group shadow-2xl border-white/10">
-                                    <h4 className="text-[10px] font-black uppercase text-red-500 tracking-[0.6em] mb-20 text-center italic uppercase tracking-widest">Global Foundations</h4>
-                                    <div className="space-y-20 text-center lg:text-left">
-                                        <div className="flex gap-10 group/item flex-col lg:flex-row items-center">
-                                            <div className="p-6 bg-red-700/20 text-red-600 rounded-3xl group-hover/item:bg-red-700 group-hover/item:text-white transition-all transform group-hover/item:scale-110 shadow-xl"><div className="w-10 h-10"><UI.Award /></div></div>
-                                            <div><p className="font-black uppercase tracking-widest text-sm text-white mb-3 italic tracking-[0.2em]">Decisive Leadership</p><p className="text-xs text-slate-400 font-medium leading-loose uppercase tracking-widest italic">Enforced regulation as a Sports Official across WashU leagues. Pressure resilient.</p></div>
-                                        </div>
-                                        <div className="flex gap-10 group/item flex-col lg:flex-row items-center">
-                                            <div className="p-6 bg-red-700/20 text-red-600 rounded-3xl group-hover/item:bg-red-700 group-hover/item:text-white transition-all transform group-hover/item:scale-110 shadow-xl"><div className="w-10 h-10"><UI.Plane /></div></div>
-                                            <div><p className="font-black uppercase tracking-widest text-sm text-white mb-3 italic tracking-[0.2em]">Mobility Ready</p><p className="text-xs text-slate-400 font-medium leading-loose uppercase tracking-widest italic">Culturally adaptable for deployment in US, India, EMEA, or APAC enterprise settings.</p></div>
-                                        </div>
-                                    </div>
-                                    <div className="absolute top-0 right-0 opacity-[0.02] pointer-events-none scale-[4.0] rotate-45 w-full h-full"><UI.Globe /></div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Footer */}
-                    <footer className="bg-white py-40 text-center relative border-t border-slate-100">
-                        <div className="max-w-7xl mx-auto px-10">
-                            <div className="mb-32 space-y-16">
-                                <p className="text-red-700 font-black uppercase tracking-[0.6em] text-[10px] italic underline decoration-red-100 decoration-4 uppercase">Strategic Partnerships Welcome.</p>
-                                <div className="flex flex-col md:flex-row justify-center items-center gap-20">
-                                    <a href="mailto:a.chaitanyakrishna@wustl.edu" className="text-3xl md:text-5xl lg:text-7xl font-black hover:text-red-700 transition-all border-b-8 border-slate-100 pb-4 italic tracking-tighter">a.chaitanyakrishna@wustl.edu</a>
-                                    <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="text-3xl md:text-5xl lg:text-7xl font-black hover:text-red-700 transition-all border-b-8 border-slate-100 pb-4 italic tracking-tighter">LinkedIn</a>
+                    {/* Footer: Final Strategy */}
+                    <footer className="bg-white border-t border-slate-100 pt-32 pb-16">
+                        <div className="section-container">
+                            <div className="grid md:grid-cols-2 gap-20 pb-24">
+                                <div>
+                                    <h2 className="text-4xl font-black tracking-tight mb-8 uppercase italic leading-none">Enterprise Modernization <br/> & <span className="text-[#8B0000]">Data Governance.</span></h2>
+                                    <p className="text-lg text-slate-500 font-medium mb-12 leading-relaxed italic">
+                                        Available for Technical Business Analyst, Operations Analyst, and Supply Chain Strategy roles. Ready for US-wide and international deployment.
+                                    </p>
+                                    <div className="flex flex-wrap gap-4">
+                                        <a href="mailto:a.chaitanyakrishna@wustl.edu" className="btn-primary">Email Inquiries</a>
+                                        <a href="https://linkedin.com/in/alapati-chaitanya-b9773245" target="_blank" className="btn-secondary">LinkedIn Profile</a>
+                                    </div>
                                 </div>
-                                <p className="text-slate-400 font-bold uppercase tracking-widest text-[11px] mt-16 tracking-[0.3em]">United States | India | International Relocation Ready.</p>
+                                <div className="flex flex-col justify-center space-y-12 bg-slate-50 p-12 rounded-[4rem] border border-slate-100 shadow-inner">
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-red-700 tracking-[0.3em] mb-4 flex items-center gap-2">
+                                            <div className="w-4 h-4"><UI.Shield /></div> Work Authorization
+                                        </p>
+                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800">F-1 STEM OPT Authorized (36 Months)</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-slate-400 tracking-[0.3em] mb-4 flex items-center gap-2">
+                                            <div className="w-4 h-4"><UI.Globe /></div> Relocation
+                                        </p>
+                                        <p className="text-lg font-bold italic uppercase tracking-tighter text-slate-800">US, India, EMEA, or APAC Ready</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-12">
-                                <div className="flex items-center gap-4 text-slate-400 text-left">
-                                    <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-xs shadow-2xl">A</div>
-                                    <div><p className="text-[10px] font-black uppercase tracking-[0.3em]">Alapati Chaitanya Krishna</p><p className="text-[8px] font-bold uppercase tracking-[0.3em] text-slate-500 italic uppercase italic">WashU Olin SMP Alumni • 2026</p></div>
-                                </div>
-                                <div className="px-12 py-4 bg-slate-50 rounded-full border border-slate-200 shadow-inner"><p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 italic uppercase">F-1 STEM OPT Ready • 36 Months Authorized</p></div>
+                            <div className="pt-12 border-t border-slate-100 text-center">
+                                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Alapati Chaitanya Krishna • Strategic Analyst Portfolio • 2025</p>
                             </div>
                         </div>
                     </footer>
                 </div>
             );
-        };
-
-        // Icon Selection Logic to avoid component mapping errors
-        const IconSelector = ({ name }) => {
-            if (name === "Flask") return <UI.Flask />;
-            if (name === "Target") return <UI.Target />;
-            if (name === "Globe") return <UI.Globe />;
-            return <UI.Activity />;
         };
 
         const container = document.getElementById('root');
