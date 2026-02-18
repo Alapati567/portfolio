@@ -16,9 +16,9 @@
             --washu-green: #2E4D31;
             --gitam-teal: #007366;
             --gitam-yellow: #FFD200;
-            --accenture-indigo: #001E60; /* Adjusted for Accenture vibe */
+            --accenture-indigo: #001E60; 
             --accenture-violet: #A100FF;
-            --bone: #FBF9F6; /* Keeping your preferred light bg */
+            --bone: #FBF9F6; 
             --deep-slate: #0F172A;
             --text-main: #1e293b;
         }
@@ -326,31 +326,58 @@
                     </section>
 
                     {/* Project Work Experience Section */}
-                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-12 my-12 shadow-2xl" id="impact">
+                    <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-10 my-10 shadow-2xl shadow-black/20" id="impact">
                         <div className="section-container">
-                            <h2 className="text-4xl lg:text-7xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left">Project Work Experience</h2>
+                            {/* Section Title */}
+                            <h2 className="text-4xl lg:text-5xl font-black tracking-tight uppercase mb-20 text-center lg:text-left">
+                                Project Work Experience
+                            </h2>
+                            {/* Project Grid */}
                             <div className="grid md:grid-cols-2 gap-10">
                                 {analyticalProjects.map((p, i) => (
-                                    <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all flex flex-col h-full group">
+                                    <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all duration-500 flex flex-col h-full group">
+                                        {/* Top Row: Icon + Metric */}
                                         <div className="flex justify-between items-start mb-10">
-                                            <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition group-hover:scale-110">
-                                                <IconSelector name={p.icon} />
+                                            <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-110">
+                                                {/* Adjusted to directly render the icon component defined in data */}
+                                                {p.icon}
                                             </div>
-                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">{p.metric}</span>
+                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">
+                                                {p.metric}
+                                            </span>
                                         </div>
-                                        <h3 className="text-2xl font-black mb-10 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-4">{p.title}</h3>
+                                        {/* Project Title */}
+                                        <h3 className="text-2xl font-black mb-8 uppercase tracking-tight leading-tight border-b border-white/10 pb-4">
+                                            {p.title}
+                                        </h3>
+                                        {/* Content Blocks */}
                                         <div className="space-y-8 flex-grow">
+                                            {/* Objective */}
                                             <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Objective</p>
-                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.problem}</p>
+                                                <p className="text-[10px] font-black uppercase text-slate-400 mb-2 tracking-widest border-l-2 border-red-700 pl-3">
+                                                    Objective
+                                                </p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">
+                                                    {p.objective}
+                                                </p>
                                             </div>
+                                            {/* Approach */}
                                             <div>
-                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Approach</p>
-                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.action}</p>
+                                                <p className="text-[10px] font-black uppercase text-slate-400 mb-2 tracking-widest border-l-2 border-red-700 pl-3">
+                                                    Approach
+                                                </p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">
+                                                    {p.approach}
+                                                </p>
                                             </div>
-                                            <div className="p-4 bg-white/5 rounded-2xl border-l-4 border-red-600">
-                                                <p className="text-[10px] font-black uppercase text-red-500 mb-1 italic">Impact</p>
-                                                <p className="text-sm font-black text-white leading-tight italic">{p.result}</p>
+                                            {/* Impact */}
+                                            <div className="p-5 bg-white/5 rounded-2xl border-l-4 border-red-600">
+                                                <p className="text-[10px] font-black uppercase text-red-400 mb-2 tracking-widest">
+                                                    Impact
+                                                </p>
+                                                <p className="text-sm font-black text-white leading-tight">
+                                                    {p.result}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -381,7 +408,7 @@
                                     <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-[#0051A2] font-black text-2xl shadow-md z-10">G</div>
                                     <div className="z-10 mt-auto text-left">
                                         <h3 className="text-4xl font-black uppercase italic tracking-tighter mb-4 leading-none underline decoration-white/20 underline-offset-8">B.Tech ECE</h3>
-                                       <p className="text-[12px] font-bold uppercase tracking-[0.2em] mb-8 opacity-80 leading-none">GITAM School of Technology & Management • FIRST CLASS DISTINCTION</p>
+                                        <p className="text-[12px] font-bold uppercase tracking-[0.2em] mb-8 opacity-80 leading-none">GITAM School of Technology & Management • FIRST CLASS DISTINCTION</p>
                                         <p className="text-sm font-medium leading-relaxed italic opacity-90 max-w-md border-t border-white/20 pt-6">
                                             Electronics & Communication engineering. GPA: 8.58 / 10.00
                                         </p>
@@ -399,7 +426,7 @@
                             <div className="grid md:grid-cols-2 gap-12">
                                 <div className="p-14 bg-slate-50 rounded-3xl border border-slate-100 transition-premium hover:bg-white group hover:shadow-2xl hover:-translate-y-1">
                                     <div className="flex gap-10 items-start">
-                                        <div className="p-6 bg-[#A51417]/10 text-[#A51417] rounded-2xl group-hover:bg-[#A51417] group-hover:text-white transition-premium shadow-xl"><UI.Activity size={32}/></div>
+                                        <div className="p-6 bg-[#A51417]/10 text-[#A51417] rounded-2xl group-hover:bg-[#A51417] group-hover:text-white transition-premium shadow-xl"><UI.Activity /></div>
                                         <div>
                                             <h4 className="font-bold text-2xl text-slate-800 mb-2 uppercase tracking-tight">Recreation Operations Lead</h4>
                                             <p className="text-xs font-black text-[#A51417] uppercase tracking-widest mb-8">May 2025 – July 2025</p>
@@ -409,7 +436,7 @@
                                 </div>
                                 <div className="p-14 bg-slate-50 rounded-3xl border border-slate-100 transition-premium hover:bg-white group hover:shadow-2xl hover:-translate-y-1">
                                     <div className="flex gap-10 items-start">
-                                        <div className="p-6 bg-[#A51417]/10 text-[#A51417] rounded-2xl group-hover:bg-[#A51417] group-hover:text-white transition-premium shadow-xl"><UI.CheckCircle size={32}/></div>
+                                        <div className="p-6 bg-[#A51417]/10 text-[#A51417] rounded-2xl group-hover:bg-[#A51417] group-hover:text-white transition-premium shadow-xl"><UI.CheckCircle /></div>
                                         <div>
                                             <h4 className="font-bold text-2xl text-slate-800 mb-2 uppercase tracking-tight">Intramural Sports Official</h4>
                                             <p className="text-xs font-black text-[#A51417] uppercase tracking-widest mb-8">Jan 2025 – Dec 2025</p>
@@ -455,18 +482,9 @@
             );
         };
 
-        const IconSelector = ({ name }) => {
-            if (name === "Flask") return <UI.Flask />;
-            if (name === "Target") return <UI.Target />;
-            if (name === "Globe") return <UI.Globe />;
-            return <UI.Chart />;
-        };
-
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
         root.render(<App />);
     </script>
 </body>
 </html>
-
-
