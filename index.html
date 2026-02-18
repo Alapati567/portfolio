@@ -329,18 +329,29 @@
                     <section className="py-32 bg-[#0F172A] text-white rounded-[4rem] mx-4 lg:mx-12 my-12 shadow-2xl" id="impact">
                         <div className="section-container">
                             <h2 className="text-4xl lg:text-7xl font-black tracking-tight uppercase italic mb-20 text-center lg:text-left">Project Work Experience</h2>
-                            <div className="grid lg:grid-cols-2 gap-12">
+                            <div className="grid md:grid-cols-2 gap-10">
                                 {analyticalProjects.map((p, i) => (
-                                    <div key={i} className="bg-white/5 p-16 rounded-[2.5rem] border border-white/10 hover:bg-white/[0.08] transition-premium group flex flex-col h-full">
-                                        <div className="flex justify-between items-start mb-14">
-                                            <div className="w-16 h-16 bg-white text-[#A51417] p-4 rounded-2xl shadow-xl transition-premium group-hover:rotate-6">{p.icon}</div>
-                                            <span className="text-[10px] font-black text-[#A51417] uppercase tracking-widest bg-[#A51417]/10 px-6 py-2.5 rounded-full border border-[#A51417]/30 shadow-lg">{p.metric}</span>
+                                    <div key={i} className="bg-white/5 p-10 rounded-[3.5rem] border border-white/10 hover:bg-white/10 transition-all flex flex-col h-full group">
+                                        <div className="flex justify-between items-start mb-10">
+                                            <div className="w-12 h-12 bg-white text-red-700 p-3 rounded-2xl shadow-xl transition group-hover:scale-110">
+                                                <IconSelector name={p.icon} />
+                                            </div>
+                                            <span className="text-[10px] font-black text-red-400 uppercase tracking-widest bg-red-900/20 px-4 py-1.5 rounded-full">{p.metric}</span>
                                         </div>
-                                        <h3 className="text-3xl lg:text-5xl font-black mb-12 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-8 group-hover:text-[#A51417] transition-colors">{p.title}</h3>
-                                        <div className="space-y-12 flex-grow text-base font-medium">
-                                            <div><p className="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-[0.4em] italic border-l border-[#A51417] pl-4">Objective</p><p className="text-slate-300 leading-relaxed italic">{p.objective}</p></div>
-                                            <div><p className="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-[0.4em] italic border-l border-[#A51417] pl-4">Approach</p><p className="text-slate-300 leading-relaxed italic">{p.approach}</p></div>
-                                            <div className="p-8 bg-white/5 rounded-2xl border-l-8 border-[#A51417] shadow-xl transition-premium group-hover:bg-white/10"><p className="text-[10px] font-black text-[#A51417] mb-2 uppercase tracking-widest">Impact</p><p className="text-xl font-black text-white italic">{p.result}</p></div>
+                                        <h3 className="text-2xl font-black mb-10 uppercase italic tracking-tighter leading-tight border-b border-white/10 pb-4">{p.title}</h3>
+                                        <div className="space-y-8 flex-grow">
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Objective</p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.problem}</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase text-slate-500 mb-1 italic tracking-widest border-l border-red-700 pl-2 italic">Approach</p>
+                                                <p className="text-sm font-semibold text-slate-300 leading-relaxed">{p.action}</p>
+                                            </div>
+                                            <div className="p-4 bg-white/5 rounded-2xl border-l-4 border-red-600">
+                                                <p className="text-[10px] font-black uppercase text-red-500 mb-1 italic">Impact</p>
+                                                <p className="text-sm font-black text-white leading-tight italic">{p.result}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -457,4 +468,5 @@
     </script>
 </body>
 </html>
+
 
